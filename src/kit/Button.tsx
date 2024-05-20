@@ -21,7 +21,7 @@ function Button({ theme = 'default', className, children, disabled, isBusy, onCl
     onClick()
   }
 
-  const big = 'w-full min-h-[50px] rounded-[12px] font-sf font-semibold text-[17px] leading-[22px] uppercase'
+  const big = 'min-h-[50px] rounded-[12px] font-sf font-semibold text-[17px] leading-[22px] uppercase'
   const small = 'rounded-full px-3 py-[6px] font-nu font-semibold text-[15px] leading-[21px]'
 
   const themeStyle = {
@@ -33,10 +33,13 @@ function Button({ theme = 'default', className, children, disabled, isBusy, onCl
   }[theme]
 
   return (
-    <div className="ButtonWrapper relative">
+    <div className={cx(
+      'ButtonWrapper relative',
+      ['small', 'small-light'].includes(theme) && 'inline-block',
+    )}>
       <button
         className={cx(
-          'enabled:hover:brightness-[1.15] enabled:active:brightness-[1.3] transition-all disabled:grayscale disabled:opacity-40 disabled:cursor-not-allowed',
+          'w-full enabled:hover:brightness-[1.15] enabled:active:brightness-[1.3] transition-all disabled:grayscale disabled:opacity-40 disabled:cursor-not-allowed',
           themeStyle,
           className,
         )}
