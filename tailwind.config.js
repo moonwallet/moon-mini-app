@@ -15,6 +15,10 @@ export default {
         plus: '#50AB19',
         minus: '#AD3535',
       },
+      fontFamily: {
+        'sf': ['SF-Pro'],
+        'nu': ['Nunito'],
+      }
     },
   },
   plugins: [],
