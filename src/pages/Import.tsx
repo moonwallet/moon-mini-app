@@ -1,8 +1,11 @@
-import { Buffer } from 'buffer'
-import { useState } from 'react'
-
 import { Keypair } from '@solana/web3.js'
 import * as bip39 from 'bip39'
+import { Buffer } from 'buffer'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+
+import Button from '../kit/Button'
 
 // @ts-ignore
 window.Buffer = Buffer
@@ -13,6 +16,8 @@ function Import() {
   const seed = bip39.mnemonicToSeedSync(mnemonic, '') // mnemonic, password
   const keypair = Keypair.fromSeed(seed.slice(0, 32))
   const pubKey = keypair.publicKey.toBase58()
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -26,7 +31,12 @@ function Import() {
       <br />
       <div>publicKey: {pubKey}</div>
 
-      <a href={`https://solscan.io/account/${pubKey}`} className="text-main">Scaner</a>
+      <Button
+        theme="small-light"
+        onClick={() => { window.location.href = `https://solscan.io/account/${pubKey}` }}
+      >
+        Scaner
+      </Button>
     </>
   )
 }

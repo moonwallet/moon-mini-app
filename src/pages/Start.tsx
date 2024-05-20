@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
+import Button from '../kit/Button'
+
 import moon from '../assets/moon.png'
 
 function Create() {
@@ -10,11 +12,21 @@ function Create() {
         <img src={moon} className="w-[180px] h-[180px]" alt="React logo" />
       </div>
       <div>
-        <button onClick={() => { navigate('/import') }}>Import</button>
+        <Button
+          theme="big"
+          onClick={() => { navigate('/import') }}
+        >
+          Import
+        </Button>
       </div>
       <br />
       <div>
-        <button onClick={() => { navigate('/create') }}>Create</button>
+        <Button
+          theme="big"
+          onClick={() => { navigate('/create') }}
+        >
+          Create
+        </Button>
       </div>
     </>
   )
