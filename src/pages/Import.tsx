@@ -26,7 +26,7 @@ function Import() {
       <br />
       <div>publicKey: {pubKey}</div>
 
-      <a href={`https://solscan.io/account/${pubKey}`}>Scaner</a>
+      <a href={`https://solscan.io/account/${pubKey}`} className="text-main">Scaner</a>
     </>
   )
 }
