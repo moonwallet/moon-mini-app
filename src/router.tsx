@@ -1,17 +1,21 @@
 import { createHashRouter } from 'react-router-dom'
 
-import Setup from './pages/Setup'
+import Start from './pages/Start'
 import Import from './pages/Import'
 import Create from './pages/Create'
 
 export const router = createHashRouter([
   {
     path: "/",
-    element: <Setup />,
-    errorElement: <Setup />,
+    element: <Start />,
+    errorElement: <Start />,
   },
   {
     path: "*",
+    element: <Start />,
+  },
+  {
+    path: "/import",
     element: <Import />,
   },
   {
