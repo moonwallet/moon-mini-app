@@ -3,6 +3,7 @@ import { createHashRouter } from 'react-router-dom'
 import Start from './pages/Start'
 import Import from './pages/Import'
 import Create from './pages/Create'
+import Wallet from './pages/Wallet'
 
 export const router = createHashRouter([
   {
@@ -21,5 +22,9 @@ export const router = createHashRouter([
   {
     path: "/create",
     element: <Create />,
+  },
+  {
+    path: "/wallet",
+    element: <Wallet />,
   },
 ])
