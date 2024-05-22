@@ -8,11 +8,15 @@ import Wallet from './pages/Wallet'
 export const router = createHashRouter([
   {
     path: "/",
-    element: <Start />,
-    errorElement: <Start />,
+    element: <Wallet />,
+    errorElement: <Wallet />,
   },
   {
     path: "*",
+    element: <Wallet />,
+  },
+  {
+    path: "/start",
     element: <Start />,
   },
   {
@@ -22,9 +26,5 @@ export const router = createHashRouter([
   {
     path: "/create",
     element: <Create />,
-  },
-  {
-    path: "/wallet",
-    element: <Wallet />,
   },
 ])

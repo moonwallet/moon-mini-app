@@ -12,7 +12,7 @@ export default {
         main: '#8643C8',
         secondary: '#3C3C43',
         warn: '#DF4141',
-        plus: '#50AB19',
+        plus: '#36D01D',
         minus: '#AD3535',
       },
       fontFamily: {

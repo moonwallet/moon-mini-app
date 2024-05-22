@@ -36,6 +36,8 @@ function Create() {
     word2 === words[numbers[1]] &&
     word3 === words[numbers[2]]
 
+  // console.log(bip39.wordlists.english)
+
   return (
     <Page bottom={
       <>
