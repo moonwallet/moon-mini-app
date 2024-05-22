@@ -7,13 +7,14 @@ import Loader from './Loader'
 type TButton = {
   theme?: 'default' | 'big' | 'big-light' | 'small' | 'small-light'
   className?: string
+  wrapperClassName?: string
   disabled?: boolean
   isBusy?: boolean
   children: ReactNode,
   onClick: () => void
 }
 
-function Button({ theme = 'default', className, children, disabled, isBusy, onClick }: TButton) {
+function Button({ theme = 'default', className, wrapperClassName, children, disabled, isBusy, onClick }: TButton) {
   const [impactOccurred] = useHapticFeedback()
 
   const onClickVibro = () => {
@@ -36,6 +37,7 @@ function Button({ theme = 'default', className, children, disabled, isBusy, onCl
     <div className={cx(
       'ButtonWrapper relative',
       ['small', 'small-light'].includes(theme) && 'inline-block',
+      wrapperClassName,
     )}>
       <button
         className={cx(

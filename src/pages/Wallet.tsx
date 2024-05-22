@@ -2,12 +2,14 @@ import cx from 'classnames'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
+import Menu from '../kit/Menu'
 
 import format from '../format'
 
 import { ReactComponent as SendIcon } from '../assets/action-send.svg'
 import { ReactComponent as SwapIcon } from '../assets/action-swap.svg'
 import { ReactComponent as ReceiveIcon } from '../assets/action-receive.svg'
+import notFound from '../assets/not-found.png'
 
 function Wallet() {
   const fiat = 0
@@ -19,7 +21,7 @@ function Wallet() {
   const isDeltaPositive = delta >= 0
 
   return (
-    <Page>
+    <Page bottom={<Menu />}>
       <div className="flex flex-col gap-10">
         <div className="flex items-center justify-between">
           <Button
@@ -65,27 +67,41 @@ function Wallet() {
             className="w-[80px] h-[64px] text-main"
             onClick={() => {}}
           >
-            <SendIcon className="mx-auto" />
+            <SwapIcon className="mx-auto" />
             <div className="text-[15px] font-semibold">Swap</div>
           </Button>
           <Button
             className="w-[80px] h-[64px] text-main"
             onClick={() => {}}
           >
-            <SendIcon className="mx-auto" />
+            <ReceiveIcon className="mx-auto" />
             <div className="text-[15px] font-semibold">Receive</div>
           </Button>
         </div>
+      </div>
 
-        <div className="flex items-center gap-6 my-5 p-3 pl-[62px] rounded-[16px] bg-[#48486F] text-white text-[18px]">
-          <div>Invite friends — earn 50% from&nbsp;Fees</div>
-          <Button
-            className="h-10 px-[18px] py-2 rounded-full bg-[#0000004D] text-[15px] font-semibold"
-            onClick={() => {}}
-          >
-            Invite
-          </Button>
+      <div className="flex items-center gap-6 my-5 p-3 pl-[62px] rounded-[16px] bg-[#48486F] text-white text-[18px]">
+        <div>Invite friends — earn 50% from&nbsp;Fees</div>
+        <Button
+          className="h-10 px-[18px] py-2 rounded-full bg-[#0000004D] text-[15px] font-semibold"
+          onClick={() => {}}
+        >
+          Invite
+        </Button>
+      </div>
+
+      <div className="flex flex-col items-center justify-center gap-3">
+        <img src={notFound} className="w-[112px] h-[112px]" />
+        <div className="font-nu text-[15px] leading-[21px] font-semibold text-center text-[#3C3C4399]">
+          You don’t have any assets.<br />Transfer some SOL to your wallet
         </div>
+        <Button
+          className="!bg-[#8888881A] text-text"
+          theme="small-light"
+          onClick={() => {}}
+        >
+          Receive
+        </Button>
       </div>
     </Page>
   )

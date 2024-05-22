@@ -13,9 +13,9 @@ const Page = ({ className, children, bottom }: {
       {children}
     </div>
     {bottom && (
-      <div className="sticky bottom-0 mt-4 py-2 bg-bg">
+      <div className="sticky bottom-0 mt-4 py-[6px] bg-bg">
         {bottom}
-        <div className="absolute -top-2 w-full h-2 bg-gradient-to-t from-bg to-transparent" />
+        <div className="absolute -top-2 w-full h-2 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
       </div>
     )}
   </div>
