@@ -57,21 +57,24 @@ function Wallet() {
 
         <div className="flex items-center justify-center">
           <Button
-            className="w-[80px] h-[64px] text-main"
+            wrapperClassName="w-[80px]"
+            className="h-[64px] text-main"
             onClick={() => {}}
           >
             <SendIcon className="mx-auto" />
             <div className="text-[15px] font-semibold">Send</div>
           </Button>
           <Button
-            className="w-[80px] h-[64px] text-main"
+            wrapperClassName="w-[80px]"
+            className="h-[64px] text-main"
             onClick={() => {}}
           >
             <SwapIcon className="mx-auto" />
             <div className="text-[15px] font-semibold">Swap</div>
           </Button>
           <Button
-            className="w-[80px] h-[64px] text-main"
+            wrapperClassName="w-[80px]"
+            className="h-[64px] text-main"
             onClick={() => {}}
           >
             <ReceiveIcon className="mx-auto" />
@@ -80,7 +83,7 @@ function Wallet() {
         </div>
       </div>
 
-      <div className="flex items-center gap-6 my-5 p-3 pl-[62px] rounded-[16px] bg-[#48486F] text-white text-[18px]">
+      <div className="flex items-center justify-between gap-6 my-5 p-3 pl-[62px] rounded-[16px] bg-[#48486F] text-white text-[18px]">
         <div>Invite friends — earn 50% from&nbsp;Fees</div>
         <Button
           className="h-10 px-[18px] py-2 rounded-full bg-[#0000004D] text-[15px] font-semibold"
