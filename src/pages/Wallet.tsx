@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import { useNavigate } from 'react-router-dom'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
@@ -12,6 +13,8 @@ import { ReactComponent as ReceiveIcon } from '../assets/action-receive.svg'
 import notFound from '../assets/not-found.png'
 
 function Wallet() {
+  const navigate = useNavigate()
+
   const fiat = 0
   const fiatFormatted = format.fiat(fiat)
   const fiatParts = fiatFormatted.split('.')
@@ -59,7 +62,7 @@ function Wallet() {
           <Button
             wrapperClassName="w-[80px]"
             className="h-[64px] text-main"
-            onClick={() => {}}
+            onClick={() => { navigate('/send') }}
           >
             <SendIcon className="mx-auto" />
             <div className="text-[15px] font-semibold">Send</div>
@@ -67,7 +70,7 @@ function Wallet() {
           <Button
             wrapperClassName="w-[80px]"
             className="h-[64px] text-main"
-            onClick={() => {}}
+            onClick={() => { navigate('/swap') }}
           >
             <SwapIcon className="mx-auto" />
             <div className="text-[15px] font-semibold">Swap</div>
@@ -75,7 +78,7 @@ function Wallet() {
           <Button
             wrapperClassName="w-[80px]"
             className="h-[64px] text-main"
-            onClick={() => {}}
+            onClick={() => { navigate('/receive') }}
           >
             <ReceiveIcon className="mx-auto" />
             <div className="text-[15px] font-semibold">Receive</div>
@@ -101,7 +104,7 @@ function Wallet() {
         <Button
           className="!bg-[#8888881A] text-text"
           theme="small-light"
-          onClick={() => {}}
+          onClick={() => { navigate('/receive') }}
         >
           Receive
         </Button>

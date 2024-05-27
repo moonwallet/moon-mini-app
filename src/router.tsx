@@ -9,6 +9,10 @@ import Market from './pages/Market'
 import Watchlist from './pages/Watchlist'
 import History from './pages/History'
 
+import Send from './pages/Send'
+import Swap from './pages/Swap'
+import Receive from './pages/Receive'
+
 export const router = createHashRouter([
   {
     path: "/",
@@ -42,5 +46,17 @@ export const router = createHashRouter([
   {
     path: "/history",
     element: <History />,
+  },
+  {
+    path: "/send",
+    element: <Send />,
+  },
+  {
+    path: "/swap",
+    element: <Swap />,
+  },
+  {
+    path: "/receive",
+    element: <Receive />,
   },
 ])
