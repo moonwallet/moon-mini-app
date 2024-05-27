@@ -3,6 +3,7 @@ import Button from '../kit/Button'
 
 import { useCopy } from '../hooks'
 import { useWallet } from '../hooks'
+import { QrCode } from '../kit/QrCode'
 
 function Receive() {
   const { copy, isCopied } = useCopy()
@@ -12,12 +13,18 @@ function Receive() {
     <Page>
       <div className="mt-[120px] flex flex-col gap-10 text-center">
         <h1 className="text-[28px] leading-[36px]">Receive token on<br />Solana network</h1>
-        <Button
-          className="text-center text-main text-[18px] leading-[22px] font-medium"
-          onClick={() => { copy(address) }}
-        >
-          {address}
-        </Button>
+        <div className="flex flex-col gap-6">
+          <QrCode
+            className="mx-auto"
+            text={address}
+          />
+          <Button
+            className="text-center text-main text-[18px] leading-[22px] font-medium"
+            onClick={() => { copy(address) }}
+          >
+            {address}
+          </Button>
+        </div>
         <Button
           theme="big-light"
           onClick={() => { copy(address) }}

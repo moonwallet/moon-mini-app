@@ -1,15 +1,21 @@
 import QRCodeStyling from 'qr-code-styling'
 import { useEffect, useRef } from 'react'
 
+import moon from '../assets/moon.png'
+
 const SIZE = 180
 
 const qrCode = new QRCodeStyling({
   width: SIZE,
   height: SIZE,
   margin: 0,
+  image: moon,
+  backgroundOptions: {
+    color: "#EFEFF1",
+  },
   dotsOptions: {
     color: '#000',
-    type: 'extra-rounded'
+    type: 'rounded'
   },
   cornersSquareOptions: {
     color: '#000',
@@ -17,17 +23,21 @@ const qrCode = new QRCodeStyling({
   },
   cornersDotOptions: {
     color: '#000',
-    type: 'dot'
+    // type: 'dot'
   },
   qrOptions: {
     errorCorrectionLevel: 'M',
     mode: 'Byte',
     typeNumber: 0
+  },
+  imageOptions: {
+    // imageSize: 1,
   }
 })
 
-const QrCode = ({ text }: {
+const QrCode = ({ text, className }: {
   text: string
+  className?: string
 }) => {
 
   const ref = useRef(null)
@@ -47,7 +57,7 @@ const QrCode = ({ text }: {
   }, [text])
 
   return (
-    <div className="bg-white" style={{ width: SIZE, height: SIZE }}>
+    <div className={className} style={{ width: SIZE, height: SIZE }}>
       <div ref={ref} />
     </div>
   )
