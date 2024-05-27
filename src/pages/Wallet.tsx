@@ -1,11 +1,12 @@
 import cx from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
+import format from '../format'
+import { useWallet } from '../hooks'
+
 import Page from '../kit/Page'
 import Button from '../kit/Button'
 import Menu from '../kit/Menu'
-
-import format from '../format'
 
 import { ReactComponent as SendIcon } from '../assets/action-send.svg'
 import { ReactComponent as SwapIcon } from '../assets/action-swap.svg'
@@ -14,6 +15,7 @@ import notFound from '../assets/not-found.png'
 
 function Wallet() {
   const navigate = useNavigate()
+  const { address } = useWallet()
 
   const fiat = 0
   const fiatFormatted = format.fiat(fiat)
@@ -32,7 +34,7 @@ function Wallet() {
             theme="small-light"
             onClick={() => {}}
           >
-            {format.address('000000000000000')}
+            {format.address(address)}
           </Button>
           <Button
             theme="small-light"

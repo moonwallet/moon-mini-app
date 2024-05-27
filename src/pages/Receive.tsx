@@ -11,7 +11,7 @@ function Receive() {
 
   return (
     <Page>
-      <div className="mt-[120px] flex flex-col gap-10 text-center">
+      <div className="mt-[80px] flex flex-col gap-10 text-center">
         <h1 className="text-[28px] leading-[36px]">Receive token on<br />Solana network</h1>
         <div className="flex flex-col gap-6">
           <QrCode
@@ -19,7 +19,7 @@ function Receive() {
             text={address}
           />
           <Button
-            className="text-center text-main text-[18px] leading-[22px] font-medium"
+            className="text-center text-main text-[18px] leading-[22px] font-medium break-words"
             onClick={() => { copy(address) }}
           >
             {address}

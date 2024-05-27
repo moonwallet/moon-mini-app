@@ -4,7 +4,6 @@ import { Buffer } from 'buffer'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
 import Button from '../kit/Button'
 
 // @ts-ignore

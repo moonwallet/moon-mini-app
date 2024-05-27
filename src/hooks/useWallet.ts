@@ -1,4 +1,22 @@
+import { Keypair } from '@solana/web3.js'
+import * as bip39 from 'bip39'
+import { Buffer } from 'buffer'
+
+import { useStore } from '../store'
+
+// @ts-ignore
+window.Buffer = Buffer
+
 export const useWallet = () => {
-  const address = '1'
+  const { mnemonic } = useStore()
+
+  let address: string = ''
+
+  if (mnemonic) {
+    const seed = bip39.mnemonicToSeedSync(mnemonic, '') // mnemonic, password
+    const keypair = Keypair.fromSeed(seed.slice(0, 32))
+    address = keypair.publicKey.toBase58()
+  }
+
   return { address }
 }

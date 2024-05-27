@@ -1,7 +1,11 @@
 import * as bip39 from 'bip39'
+import cx from 'classnames'
 import Lottie from 'lottie-react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import { useCopy } from '../hooks'
+import { useStore } from '../store'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
@@ -11,8 +15,11 @@ import animationSuccess from '../assets/animation-success.json'
 
 function Create() {
   const navigate = useNavigate()
-  const mnemonic = useMemo<string>(() => bip39.generateMnemonic(), [])
-  const words = mnemonic.split(' ')
+  const { copy, isCopied } = useCopy()
+  const { setMnemonic } = useStore()
+
+  const newMnemonic = useMemo<string>(() => bip39.generateMnemonic(), [])
+  const words = newMnemonic.split(' ')
 
   const [step, setStep] = useState<'save' | 'check' | 'success'>('save')
 
@@ -37,6 +44,12 @@ function Create() {
     word3 === words[numbers[2]]
 
   // console.log(bip39.wordlists.english)
+
+  useEffect(() => {
+    if (step === 'success') {
+      setMnemonic(newMnemonic)
+    }
+  }, [step])
 
   return (
     <Page bottom={
@@ -73,7 +86,21 @@ function Create() {
           <div className="flex flex-col items-center">
             <h1 className="text-center">Save your Secret Recovery&nbsp;Phrase</h1>
             <div className="mb-5 text-[16px] leading-[24px] text-text/[50%] text-center">Your Recovery Phrase is&nbsp;necessary for&nbsp;accessing your&nbsp;assets. Do&nbsp;not&nbsp;share&nbsp;it.</div>
-            <Button theme="small-light" onClick={() => { navigator.clipboard.writeText(mnemonic) }}>Copy to clipboard</Button>
+            <Button
+              theme="small-light"
+              onClick={() => { copy(newMnemonic) }}
+            >
+              <div className="relative">
+                <span className={cx(
+                  'absolute w-full h-full text-center transition-all',
+                  isCopied ? 'opacity-100' : 'opacity-0',
+                )}>Copied!</span>
+                <span className={cx(
+                  'transition-all',
+                  isCopied ? 'opacity-0' : 'opacity-100',
+                )}>Copy to clipboard</span>
+              </div>
+            </Button>
           </div>
 
           <div className="mt-10 grid grid-cols-2 grid-rows-6 grid-flow-col gap-3">

@@ -11,4 +11,7 @@ type TStore = {
 export const useStore = create<TStore>((set/*, get*/) => ({
   mnemonic: null,
   setMnemonic: (mnemonic) => set(({ mnemonic })),
+
+  isDebug: false,
+  setDebug: (isDebug) => set(({ isDebug })),
 }))
