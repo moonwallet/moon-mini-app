@@ -2,13 +2,13 @@ import { Keypair } from '@solana/web3.js'
 import * as bip39 from 'bip39'
 import { Buffer } from 'buffer'
 
-import { useStore } from '../store'
+import { usePersistStore } from '../store'
 
 // @ts-ignore
 window.Buffer = Buffer
 
 export const useWallet = () => {
-  const { mnemonic } = useStore()
+  const { mnemonic } = usePersistStore()
 
   let address: string = ''
 

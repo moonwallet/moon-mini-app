@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useCopy } from '../hooks'
-import { useStore } from '../store'
+import { usePersistStore } from '../store'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
@@ -16,7 +16,7 @@ import animationSuccess from '../assets/animation-success.json'
 function Create() {
   const navigate = useNavigate()
   const { copy, isCopied } = useCopy()
-  const { setMnemonic } = useStore()
+  const { setMnemonic } = usePersistStore()
 
   const newMnemonic = useMemo<string>(() => bip39.generateMnemonic(), [])
   const words = newMnemonic.split(' ')
