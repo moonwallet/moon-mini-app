@@ -74,7 +74,7 @@ function Create() {
         {step === 'success' && (
           <Button
             theme="big"
-            onClick={() => { navigate('/wallet') }}
+            onClick={() => { navigate('/') }}
           >
             VIEW MY WALLET
           </Button>

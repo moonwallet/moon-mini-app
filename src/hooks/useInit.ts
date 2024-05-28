@@ -8,8 +8,10 @@ export const useInit = () => {
   const routerLocation = useLocation()
   const { address } = useWallet()
 
+  const startPaths = ['/start', '/import', '/create']
+
   useEffect(() => {
-    if (!address && !['/start', '/import', '/create'].includes(routerLocation.pathname)) {
+    if (!address && !startPaths.includes(routerLocation.pathname)) {
       navigate('/start')
     }
   }, [routerLocation.pathname, address])

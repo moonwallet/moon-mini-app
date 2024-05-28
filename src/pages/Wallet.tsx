@@ -32,7 +32,7 @@ function Wallet() {
           <Button
             className="!bg-[#8888881A] text-text"
             theme="small-light"
-            onClick={() => {}}
+            onClick={() => { navigate('/settings') }}
           >
             {format.address(address)}
           </Button>
