@@ -34,7 +34,7 @@ function Settings() {
         </Button>
       </div>
       <Group className="mt-10">
-        <GroupButton icon={<PhraseIcon />} text="Show Recovery Phrase" onClick={() => { navigate('/show-phrase') }} />
+        <GroupButton icon={<PhraseIcon />} text="Show Recovery Phrase" onClick={() => { navigate('/phrase') }} />
         <Divider />
         <GroupButton icon={<DisconnectIcon />} text="Disconnect Wallet" onClick={() => { setMnemonic(null) }} />
       </Group>

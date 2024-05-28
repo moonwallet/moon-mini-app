@@ -14,6 +14,7 @@ import Swap from './pages/Swap'
 import Receive from './pages/Receive'
 
 import Settings from './pages/Settings'
+import Phrase from './pages/Phrase'
 
 export const router = createHashRouter([
   {
@@ -64,5 +65,9 @@ export const router = createHashRouter([
   {
     path: "/settings",
     element: <Settings />,
+  },
+  {
+    path: "/phrase",
+    element: <Phrase />,
   },
 ])
