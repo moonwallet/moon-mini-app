@@ -1,5 +1,5 @@
 import * as bip39 from 'bip39'
-import Lottie from 'lottie-react'
+
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,8 +9,7 @@ import Page from '../kit/Page'
 import Button from '../kit/Button'
 import ShowMnemonic from '../kit/ShowMnemonic'
 import Word from '../kit/Word'
-
-import animationSuccess from '../assets/animation-success.json'
+import Success from '../kit/Success'
 
 function Create() {
   const navigate = useNavigate()
@@ -41,7 +40,7 @@ function Create() {
     word2 === words[numbers[1]] &&
     word3 === words[numbers[2]]
 
-  // console.log(bip39.wordlists.english)
+  // console.log(bip39.wordlists.english) // todo
 
   useEffect(() => {
     if (step === 'success') {
@@ -110,16 +109,7 @@ function Create() {
       )}
 
       {step === 'success' && (
-        <div className="flex flex-col items-center gap-[50px]">
-          <div className="mt-[150px] w-[112px] h-[112px]">
-            <Lottie
-              style={{ width: 112, height: 112 }}
-              animationData={animationSuccess}
-              loop={true}
-            />
-          </div>
-          <h1 className="text-center">Your Wallet is ready</h1>
-        </div>
+        <Success />
       )}
     </Page>
   )
