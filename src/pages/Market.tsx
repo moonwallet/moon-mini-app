@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 import Page from '../kit/Page'
 import Menu from '../kit/Menu'
@@ -6,27 +6,17 @@ import SearchInput from '../kit/SearchInput'
 import Button from '../kit/Button'
 import Tokens from '../kit/Tokens'
 
+import { useSearch, useMock } from '../hooks'
+
 import { ReactComponent as SortIcon } from '../assets/sort.svg'
 import { ReactComponent as FilterIcon } from '../assets/filter.svg'
 
 function Market() {
   const [search, setSearch] = useState('')
 
-  const tokens: TToken[] = useMemo(() => {
-    const tokens = []
-    const letters = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('')
-    const getLetter = () => letters[Math.floor(Math.random() * letters.length)]
-    while (tokens.length < 100) {
-      tokens.push(`${getLetter()}${getLetter()}${getLetter()}`)
-    }
-    return tokens
-  }, [])
+  const { tokens } = useMock()
 
-  const tokensFiltered: TToken[] = useMemo(() => {
-    return tokens.filter(token => token.toLowerCase().includes(search.trim().toLowerCase()))
-  }, [tokens, search])
-
-  const { tokensFiltered } = useSearch()
+  const { tokensFiltered } = useSearch({ search, tokens })
 
   return (
     <Page bottom={<Menu />}>
@@ -61,7 +51,7 @@ function Market() {
         </div>
       </div>
 
-      <Tokens tokens={tokens} />
+      <Tokens tokens={tokensFiltered} />
     </Page>
   )
 }

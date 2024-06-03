@@ -1,3 +1,5 @@
 export * from './useCopy'
 export * from './useInit'
+export * from './useMock'
+export * from './useSearch'
 export * from './useWallet'
