@@ -8,5 +8,7 @@ export const useSearch = ({ search, tokens }: {
     return tokens.filter(token => token.toLowerCase().includes(search.trim().toLowerCase()))
   }, [tokens, search])
 
-  return { tokensFiltered }
+  const isNotFound = tokens.length > 0 && tokensFiltered.length === 0
+
+  return { tokensFiltered, isNotFound }
 }

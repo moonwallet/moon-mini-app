@@ -12,7 +12,7 @@ function Watchlist() {
 
   const { tokens } = useMock()
 
-  const { tokensFiltered } = useSearch({ search, tokens: tokens.slice(0, 3) })
+  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: tokens.slice(0, 3) })
 
   return (
     <Page bottom={<Menu />}>
@@ -24,7 +24,7 @@ function Watchlist() {
         />
       </div>
 
-      <Tokens tokens={tokensFiltered} />
+      <Tokens tokens={tokensFiltered} isNotFound={isNotFound} />
     </Page>
   )
 }

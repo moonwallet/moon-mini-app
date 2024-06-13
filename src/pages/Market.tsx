@@ -16,7 +16,7 @@ function Market() {
 
   const { tokens } = useMock()
 
-  const { tokensFiltered } = useSearch({ search, tokens })
+  const { tokensFiltered, isNotFound } = useSearch({ search, tokens })
 
   return (
     <Page bottom={<Menu />}>
@@ -51,7 +51,7 @@ function Market() {
         </div>
       </div>
 
-      <Tokens tokens={tokensFiltered} />
+      <Tokens tokens={tokensFiltered} isNotFound={isNotFound} />
     </Page>
   )
 }
