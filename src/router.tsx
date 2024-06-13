@@ -8,6 +8,7 @@ import Wallet from './pages/Wallet'
 import Market from './pages/Market'
 import Watchlist from './pages/Watchlist'
 import History from './pages/History'
+import Asset from './pages/Asset'
 
 import Send from './pages/Send'
 import Swap from './pages/Swap'
@@ -49,6 +50,10 @@ export const router = createHashRouter([
   {
     path: "/history",
     element: <History />,
+  },
+  {
+    path: "/asset",
+    element: <Asset />,
   },
   {
     path: "/send",

@@ -41,7 +41,7 @@ function Button({ theme = 'default', className, wrapperClassName, children, disa
     )}>
       <button
         className={cx(
-          'w-full enabled:hover:brightness-[1.15] enabled:active:brightness-[1.3] transition-all disabled:grayscale disabled:opacity-40 disabled:cursor-not-allowed',
+          'w-full enabled:hover:brightness-[1.1] enabled:active:brightness-[1.2] transition-all disabled:grayscale disabled:opacity-40 disabled:cursor-not-allowed',
           themeStyle,
           className,
         )}

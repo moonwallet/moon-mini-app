@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import { TToken } from '../types'
+
 import Button from '../kit/Button'
 import Dropdown from '../kit/Dropdown'
 import Token from '../kit/Token'
@@ -43,8 +45,8 @@ const Tokens = ({ tokens, isNotFound }: {
 
       {tokens.map(token => (
         <Token
-          key={token}
-          title={token}
+          key={token.address}
+          token={token}
         />
       ))}
 
