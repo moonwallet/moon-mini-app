@@ -8,9 +8,11 @@ export const useMock = () => {
     const letters = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('')
     const getLetter = () => letters[Math.floor(Math.random() * letters.length)]
     while (tokens.length < 100) {
+      const ticker = `${getLetter()}${getLetter()}${getLetter()}`
       tokens.push({
-        title: `${getLetter()}${getLetter()}${getLetter()}`,
-        address: `${getLetter()}${getLetter()}${getLetter()}`,
+        address: ticker,
+        title: ticker + 'Token',
+        ticker: ticker,
         delta: 100 * Math.random() * (Math.random() > 0.5 ? 1 : -1),
         price: Math.random() * 100,
       })
