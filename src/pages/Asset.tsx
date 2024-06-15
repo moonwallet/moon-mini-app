@@ -8,6 +8,7 @@ import Page from '../kit/Page'
 
 import { ReactComponent as TokenFavIcon } from '../assets/token-fav.svg'
 import { ReactComponent as TokenExplorerIcon } from '../assets/token-explorer.svg'
+import { ReactComponent as FlagIcon } from '../assets/flag.svg'
 
 function Asset() {
   const { tokens } = useMock()
@@ -17,7 +18,16 @@ function Asset() {
   const isDeltaPositive = token.delta >= 0
 
   return (
-    <Page>
+    <Page bottom={
+      <div className="w-full">
+        <Button
+          theme="big"
+          onClick={() => {}}
+        >
+          BUY
+        </Button>
+      </div>
+    }>
       <div className="flex flex-col gap-5"> 
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-[10px]">
@@ -25,7 +35,10 @@ function Asset() {
               <span className="text-bg text-[18px] leading-[40px] font-bold">{`${token.ticker.slice(0,1)}${token.ticker.slice(-1)}`}</span>
             </div>
             <div className="flex-1">
-              <div className="text-[18px] leading-[22px] font-medium">{token.title}</div>
+              <div className="flex items-center">
+                <div className="text-[18px] leading-[22px] font-medium">{token.title}</div>
+                <FlagIcon className="w-5 h-5" />
+              </div>
               <div className="text-[24px] leading-[22px] font-semibold">{format.fiat(token.price)}</div>
             </div>
           </div>
