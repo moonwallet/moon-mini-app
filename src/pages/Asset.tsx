@@ -10,6 +10,10 @@ import { ReactComponent as TokenFavIcon } from '../assets/token-fav.svg'
 import { ReactComponent as TokenExplorerIcon } from '../assets/token-explorer.svg'
 import { ReactComponent as FlagIcon } from '../assets/flag.svg'
 
+import { ReactComponent as SocialTelegramIcon } from '../assets/social-telegram.svg'
+import { ReactComponent as SocialTwitterIcon } from '../assets/social-twitter.svg'
+import { ReactComponent as SocialSiteIcon } from '../assets/social-site.svg'
+
 function Asset() {
   const { tokens } = useMock()
   const token = tokens[0]
@@ -56,6 +60,33 @@ function Asset() {
               <TokenExplorerIcon className="w-[48px] h-[48px]" />
             </Button>
           </div>
+        </div>
+
+        <div className="flex items-center rounded-xl overflow-hidden">
+          <Button
+            wrapperClassName="flex-grow basis-0"
+            className="w-full flex items-center justify-center gap-1 h-10 bg-main/10 text-main text-[14px]"
+            onClick={() => {}}
+          >
+            <SocialTelegramIcon className="w-5 h-5" />
+            <span>Telegram</span>
+          </Button>
+          <Button
+            wrapperClassName="flex-grow basis-0 border-[#0000001A] border-l border-r"
+            className="w-full flex items-center justify-center gap-1 h-10 bg-main/10 text-main text-[14px]"
+            onClick={() => {}}
+          >
+            <SocialTwitterIcon className="w-5 h-5" />
+            <span>Twitter</span>
+          </Button>
+          <Button
+            wrapperClassName="flex-grow basis-0"
+            className="w-full flex items-center justify-center gap-1 h-10 bg-main/10 text-main text-[14px]"
+            onClick={() => {}}
+          >
+            <SocialSiteIcon className="w-5 h-5" />
+            <span>Website</span>
+          </Button>
         </div>
 
         <div className="relative h-[350px] rounded-[20px] bg-white p-3">
