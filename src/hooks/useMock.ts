@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { TToken } from '../types'
+import { TToken, TCandle } from '../types'
 
 export const useMock = () => {
   const tokens: TToken[] = useMemo(() => {
@@ -20,5 +20,20 @@ export const useMock = () => {
     return tokens
   }, [])
 
-  return { tokens }
+  const time = useMemo(() => Math.floor(Date.now() / 1000) - 24 * 60 * 60, [])
+  const candles: TCandle[] = useMemo(() => ([
+    { open: 10, high: 10.63, low: 9.49, close: 9.55, time: time },
+    { open: 9.55, high: 10.30, low: 9.42, close: 9.94, time: time + 60 * 1 },
+    { open: 9.94, high: 10.17, low: 9.92, close: 9.78, time: time + 60 * 2 },
+    { open: 9.78, high: 10.59, low: 9.18, close: 9.51, time: time + 60 * 3 },
+    { open: 9.55, high: 10.30, low: 9.42, close: 9.94, time: time + 60 * 4 },
+    { open: 9.94, high: 10.17, low: 9.92, close: 9.78, time: time + 60 * 5 },
+    { open: 9.78, high: 10.59, low: 9.18, close: 9.51, time: time + 60 * 6 },
+    { open: 9.55, high: 10.30, low: 9.42, close: 9.94, time: time + 60 * 7 },
+    { open: 9.94, high: 10.17, low: 9.92, close: 9.78, time: time + 60 * 8 },
+    { open: 9.78, high: 10.59, low: 9.18, close: 9.51, time: time + 60 * 9 },
+    { open: 9.55, high: 10.30, low: 9.42, close: 9.94, time: time + 60 * 10 },
+  ]), [time])
+
+  return { tokens, candles }
 }

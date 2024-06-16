@@ -5,6 +5,7 @@ import { useMock } from '../hooks'
 
 import Button from '../kit/Button'
 import Page from '../kit/Page'
+import TradingView from '../kit/TradingView'
 
 import { ReactComponent as TokenFavIcon } from '../assets/token-fav.svg'
 import { ReactComponent as TokenExplorerIcon } from '../assets/token-explorer.svg'
@@ -19,11 +20,13 @@ import { ReactComponent as CommunityIcon } from '../assets/community.svg'
 import { ReactComponent as OutIcon } from '../assets/out.svg'
 
 function Asset() {
-  const { tokens } = useMock()
+  const { tokens, candles } = useMock()
+  // const { candles } = useCandles()
   const token = tokens[0]
 
   const deltaFormatted = format.percent(Math.abs(token.delta))
   const isDeltaPositive = token.delta >= 0
+
 
   return (
     <Page bottom={
@@ -102,7 +105,7 @@ function Asset() {
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <div className="w-full relative h-[350px] rounded-[20px] bg-white p-3">
+          <div className="w-full relative h-[350px] rounded-[20px] bg-white p-2 pt-[64px]">
             <div className={cx(
               'absolute top-3 right-3 px-3 py-[6px] rounded-[20px] text-[14px] leading-[18px] text-[#3C3C4399]',
               isDeltaPositive ? 'text-[#50AB19] bg-[#50AB19]/10' : 'text-minus bg-minus/10',
@@ -111,6 +114,7 @@ function Asset() {
               <span>{deltaFormatted}</span>
               <span>%</span>
             </div>
+            <TradingView candles={candles} />
           </div>
 
           <div className="flex w-full rounded-[20px] bg-white py-3">

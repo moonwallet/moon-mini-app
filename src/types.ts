@@ -7,3 +7,11 @@ export type TToken = {
   delta: number
   price: number
 }
+
+export type TCandle = {
+  open: number
+  high: number
+  low: number
+  close: number
+  time: number
+}
