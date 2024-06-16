@@ -14,6 +14,8 @@ import { ReactComponent as SocialTelegramIcon } from '../assets/social-telegram.
 import { ReactComponent as SocialTwitterIcon } from '../assets/social-twitter.svg'
 import { ReactComponent as SocialSiteIcon } from '../assets/social-site.svg'
 
+import { ReactComponent as CreatedIcon } from '../assets/created.svg'
+
 function Asset() {
   const { tokens } = useMock()
   const token = tokens[0]
@@ -120,8 +122,23 @@ function Asset() {
             </div>
           </div>
         </div>
-      </div>
 
+        <div className="">
+          <div className="pt-5 px-1 pb-[6px] text-[12px] leading-[22px] text-[#00000066]">ABOUT</div>
+          <div className="rounded-[20px] bg-white px-3">
+            <div className="border-[#0000001A] border-b py-4 text-[17px] leading-[24px]">
+              $duk - duk dev gone duk kill dev duk duk go kill all mfers duk make dev regret
+            </div>
+            <div className="flex items-center justify-between gap-[10px] border-[#0000001A] border-b py-4 text-[17px] leading-[24px]">
+              <div className="flex items-center justify-between gap-[10px]">
+                <CreatedIcon className="w-5 h-5" />
+                <span className="text-[16px] leading-[22px] text-[#000000B2]">Pair created:</span>
+              </div>
+              <div className="text-[16px] leading-[22px] text-[#000000B2]">14 April, 2022</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Page>
   )
 }
