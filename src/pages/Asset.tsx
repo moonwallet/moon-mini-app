@@ -104,8 +104,8 @@ function Asset() {
         <div className="flex flex-col items-center gap-2">
           <div className="w-full relative h-[350px] rounded-[20px] bg-white p-3">
             <div className={cx(
-              'absolute top-3 right-3 px-3 py-[6px] rounded-[20px] bg-[#50AB191A] text-[14px] leading-[18px] text-[#3C3C4399]',
-              isDeltaPositive ? 'text-[#50AB19]' : 'text-minus',
+              'absolute top-3 right-3 px-3 py-[6px] rounded-[20px] text-[14px] leading-[18px] text-[#3C3C4399]',
+              isDeltaPositive ? 'text-[#50AB19] bg-[#50AB19]/10' : 'text-minus bg-minus/10',
             )}>
               <span>{isDeltaPositive ? '+' : '−'}</span>
               <span>{deltaFormatted}</span>
