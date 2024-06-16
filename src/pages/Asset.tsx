@@ -15,6 +15,8 @@ import { ReactComponent as SocialTwitterIcon } from '../assets/social-twitter.sv
 import { ReactComponent as SocialSiteIcon } from '../assets/social-site.svg'
 
 import { ReactComponent as CreatedIcon } from '../assets/created.svg'
+import { ReactComponent as CommunityIcon } from '../assets/community.svg'
+import { ReactComponent as OutIcon } from '../assets/out.svg'
 
 function Asset() {
   const { tokens } = useMock()
@@ -25,16 +27,24 @@ function Asset() {
 
   return (
     <Page bottom={
-      <div className="w-full">
+      <div className="w-full flex items-center gap-2">
         <Button
+          wrapperClassName="flex-grow basis-0"
           theme="big"
           onClick={() => {}}
         >
           BUY
         </Button>
+        <Button
+          wrapperClassName="flex-grow basis-0"
+          theme="big-light"
+          onClick={() => {}}
+        >
+          SELL
+        </Button>
       </div>
     }>
-      <div className="flex flex-col gap-5"> 
+      <div className="flex flex-col gap-5 pb-5">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-[10px]">
             <div className="w-[60px] h-[60px] flex items-center justify-center bg-gradient-to-b from-text/20 to-text/40 rounded-full">
@@ -136,6 +146,19 @@ function Asset() {
               </div>
               <div className="text-[16px] leading-[22px] text-[#000000B2]">14 April, 2022</div>
             </div>
+            <div className="flex items-center justify-between gap-[10px] border-[#0000001A] border-b py-4 text-[17px] leading-[24px]">
+              <div className="flex items-center justify-between gap-[10px]">
+                <CommunityIcon className="w-5 h-5" />
+                <span className="text-[16px] leading-[22px] text-[#000000B2]">Community take over</span>
+              </div>
+              <div className="text-[16px] leading-[22px] text-[#000000B2]">14 April, 2022</div>
+            </div>
+            <a target="_blank" href={`https://solscan.io/`} className="flex items-center gap-[10px] py-4 text-main text-[17px] leading-[24px]">
+              <div className="flex items-center justify-between gap-[10px]">
+                <OutIcon className="w-5 h-5" />
+                <span className="text-[16px] leading-[22px]">View on Solscan</span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
