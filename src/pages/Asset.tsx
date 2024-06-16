@@ -89,17 +89,39 @@ function Asset() {
           </Button>
         </div>
 
-        <div className="relative h-[350px] rounded-[20px] bg-white p-3">
-          <div className={cx(
-            'absolute top-3 right-3 px-3 py-[6px] rounded-[20px] bg-[#50AB191A] text-[14px] leading-[18px] text-[#3C3C4399]',
-            isDeltaPositive ? 'text-[#50AB19]' : 'text-minus',
-          )}>
-            <span>{isDeltaPositive ? '+' : '−'}</span>
-            <span>{deltaFormatted}</span>
-            <span>%</span>
+        <div className="flex flex-col items-center gap-2">
+          <div className="w-full relative h-[350px] rounded-[20px] bg-white p-3">
+            <div className={cx(
+              'absolute top-3 right-3 px-3 py-[6px] rounded-[20px] bg-[#50AB191A] text-[14px] leading-[18px] text-[#3C3C4399]',
+              isDeltaPositive ? 'text-[#50AB19]' : 'text-minus',
+            )}>
+              <span>{isDeltaPositive ? '+' : '−'}</span>
+              <span>{deltaFormatted}</span>
+              <span>%</span>
+            </div>
+          </div>
+
+          <div className="flex w-full rounded-[20px] bg-white py-3">
+            <div className="flex flex-grow basis-0 flex-col items-center gap-1 border-[#0000001A] border-r">
+              <div className="text-[12px] leading-[18px] text-[#3C3C4399]">Market Cap</div>
+              <div className="text-[18px] leading-[22px] font-medium">$1.2M</div>
+            </div>
+            <div className="flex flex-grow basis-0 flex-col items-center gap-1 border-[#0000001A] border-r">
+              <div className="text-[12px] leading-[18px] text-[#3C3C4399]">Liquidity</div>
+              <div className="text-[18px] leading-[22px] font-medium">$120k</div>
+            </div>
+            <div className="flex flex-grow basis-0 flex-col items-center gap-1 border-[#0000001A] border-r">
+              <div className="text-[12px] leading-[18px] text-[#3C3C4399]">24h Volume</div>
+              <div className="text-[18px] leading-[22px] font-medium">$150k</div>
+            </div>
+            <div className="flex flex-grow basis-0 flex-col items-center gap-1 border-[#0000001A] border-r">
+              <div className="text-[12px] leading-[18px] text-[#3C3C4399]">Holders</div>
+              <div className="text-[18px] leading-[22px] font-medium">4,320</div>
+            </div>
           </div>
         </div>
       </div>
+
     </Page>
   )
 }
