@@ -1,5 +1,8 @@
+import { useState } from 'react'
+
 import Button from '../kit/Button'
 import Page from '../kit/Page'
+import InputAmount from '../kit/InputAmount'
 
 import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SwapIcon } from '../assets/swap.svg'
@@ -7,6 +10,8 @@ import { ReactComponent as SwapIcon } from '../assets/swap.svg'
 function Swap() {
   const isButtonEnabled = false
   const buttonText = 'ENTER AMOUNT'
+
+  const [amount, setAmount] = useState(0)
 
   const selectFrom = () => {
   }
@@ -31,6 +36,10 @@ function Swap() {
             <div className="text-[18px] leading-[22px] font-medium text-main">Swap from</div>
           </Button>
           <div className="p-5 pb-8 border-black/[8%] border-t">
+            <InputAmount
+              amount={amount}
+              onChange={setAmount}
+            />
           </div>
           <Button
             wrapperClassName="absoulte w-10 h-10 -bottom-[24px] left-[50%] -translate-x-[50%]"
