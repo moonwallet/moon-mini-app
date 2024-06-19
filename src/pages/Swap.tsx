@@ -8,10 +8,12 @@ import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SwapIcon } from '../assets/swap.svg'
 
 function Swap() {
-  const isButtonEnabled = false
-  const buttonText = 'ENTER AMOUNT'
-
   const [amount, setAmount] = useState(0)
+
+  const isButtonEnabled = amount > 0
+  const buttonText = amount === 0
+    ? 'ENTER AMOUNT'
+    : 'REVIEW ORDER'
 
   const selectFrom = () => {
   }
@@ -25,7 +27,7 @@ function Swap() {
   return (
     <Page>
       <div className="flex flex-col gap-2">
-        <div className="rounded-[20px] bg-white">
+        <div className="relative rounded-[20px] bg-white">
           <Button
             onClick={selectFrom}
             className="flex items-center gap-2 p-[14px]"
@@ -41,13 +43,15 @@ function Swap() {
               onChange={setAmount}
             />
           </div>
-          <Button
-            wrapperClassName="absoulte w-10 h-10 -bottom-[24px] left-[50%] -translate-x-[50%]"
-            className="flex items-center justify-center w-10 h-10 bg-[#EAEAEC] rounded-full"
-            onClick={swapTokens}
-          >
-            <SwapIcon className="w-10 h-10 text-[#808082]" />
-          </Button>
+          <div className="absolute w-10 h-10 -bottom-[24px] left-[50%] -translate-x-[50%]">
+            <Button
+              wrapperClassName=""
+              className="flex items-center justify-center w-10 h-10 bg-[#EAEAEC] rounded-full"
+              onClick={swapTokens}
+            >
+              <SwapIcon className="w-10 h-10 text-[#808082]" />
+            </Button>
+          </div>
         </div>
         <div className="rounded-[20px] bg-white">
           <Button
