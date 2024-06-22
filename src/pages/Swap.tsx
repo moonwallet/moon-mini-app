@@ -22,6 +22,8 @@ function Swap() {
 
   const [amount, setAmount] = useState(0)
 
+  const receiveAmount = amount * 10
+
   const isButtonEnabled = amount > 0
   const buttonText = amount === 0
     ? 'ENTER AMOUNT'
@@ -123,6 +125,16 @@ function Swap() {
                         <div className="text-[18px] leading-[22px] font-medium">{toToken.title}</div>
                         <div className="text-[14px] leading-[22px] text-text/40">Receive {toToken.ticker}</div>
                       </div>
+                    </div>
+                    <div className="text-[18px] leading-[22px">
+                      {receiveAmount > 0 ? (
+                        <>
+                          <span className="text-[#3C3C4399]">≈</span>
+                          <span>{receiveAmount}</span>
+                        </>
+                      ) : (
+                        <span className="text-[#BFC6CD]">0.00</span>
+                      )}
                     </div>
                   </div>
                 )}
