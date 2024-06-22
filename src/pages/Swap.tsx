@@ -26,15 +26,10 @@ function Swap() {
     ? 'ENTER AMOUNT'
     : 'REVIEW ORDER'
 
-  const onClickFrom = () => {
-    setStep('SELECT_FROM')
-  }
-
-  const onClickTo = () => {
-    setStep('SELECT_TO')
-  }
-
   const swapTokens = () => {
+    const _fromToken = fromToken && { ...fromToken }
+    setFromToken(toToken)
+    setToToken(_fromToken)
   }
 
   const { tokens } = useMock()
@@ -48,7 +43,7 @@ function Swap() {
           <div className="flex flex-col gap-2">
             <div className="relative rounded-[20px] bg-white">
               <Button
-                onClick={onClickFrom}
+                onClick={() => { setStep('SELECT_FROM') }}
                 className="flex items-center gap-2 p-[14px]"
               >
                 {fromToken === null && (
@@ -78,7 +73,7 @@ function Swap() {
             </div>
             <div className="rounded-[20px] bg-white">
               <Button
-                onClick={onClickTo}
+                onClick={() => { setStep('SELECT_TO') }}
                 className="flex items-center gap-2 p-[14px]"
               >
                 {toToken === null && (
