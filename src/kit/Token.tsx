@@ -1,21 +1,22 @@
 import cx from 'classnames'
-import { useNavigate } from 'react-router-dom'
 
 import Button from './Button'
 
 import format from '../format'
 import { TToken } from '../types'
 
-const Token = ({ token }: { token: TToken }) => {
+const Token = ({ token, onClick }: {
+  token: TToken
+  onClick: (token: TToken) => void
+}) => {
   const deltaFormatted = format.percent(Math.abs(token.delta))
   const isDeltaPositive = token.delta >= 0
 
-  const navigate = useNavigate()
   return (
     <div className="Token">
       <Button
         className="text-left flex items-center gap-2 bg-white py-[10px] px-[14px] rounded-[16px]"
-        onClick={() => { navigate('/asset') }}
+        onClick={() => { onClick(token) }}
       >
         <div className="w-[48px] h-[48px] flex items-center justify-center bg-gradient-to-b from-text/20 to-text/40 rounded-full">
           <span className="text-bg text-[18px] leading-[40px] font-bold">{`${token.ticker.slice(0,1)}${token.ticker.slice(-1)}`}</span>

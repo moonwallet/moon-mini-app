@@ -5,10 +5,11 @@ import Token from '../kit/Token'
 
 import notFound from '../assets/not-found.png'
 
-const Tokens = ({ header, tokens, isNotFound }: {
+const Tokens = ({ header, tokens, isNotFound, onClick }: {
   header?: ReactNode
   tokens: TToken[]
   isNotFound: boolean
+  onClick: (token: TToken) => void
 }) => {
   return (
     <div className="Tokens mt-10 flex flex-col gap-2">
@@ -18,6 +19,7 @@ const Tokens = ({ header, tokens, isNotFound }: {
         <Token
           key={token.address}
           token={token}
+          onClick={onClick}
         />
       ))}
 

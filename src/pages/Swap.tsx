@@ -8,11 +8,17 @@ import InputAmount from '../kit/InputAmount'
 import SearchInput from '../kit/SearchInput'
 import Tokens from '../kit/Tokens'
 
+import { TToken } from '../types'
+
 import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SwapIcon } from '../assets/swap.svg'
 
 function Swap() {
   const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO'>('START')
+
+  const [fromToken, setFromToken] = useState<null | TToken>(null)
+  const [toToken, setToToken] = useState<null | TToken>(null)
+
   const [amount, setAmount] = useState(0)
 
   const isButtonEnabled = amount > 0
@@ -45,10 +51,14 @@ function Swap() {
                 onClick={onClickFrom}
                 className="flex items-center gap-2 p-[14px]"
               >
-                <div className="flex items-center justify-center h-[48px] w-[48px] rounded-full bg-main/10">
-                  <AddIcon className="w-6 h-6 text-main" />
-                </div>
-                <div className="text-[18px] leading-[22px] font-medium text-main">Swap from</div>
+                {fromToken === null && (
+                  <>
+                    <div className="flex items-center justify-center h-[48px] w-[48px] rounded-full bg-main/10">
+                      <AddIcon className="w-6 h-6 text-main" />
+                    </div>
+                    <div className="text-[18px] leading-[22px] font-medium text-main">Swap from</div>
+                  </>
+                )}
               </Button>
               <div className="p-5 pb-8 border-black/[8%] border-t">
                 <InputAmount
@@ -71,10 +81,14 @@ function Swap() {
                 onClick={onClickTo}
                 className="flex items-center gap-2 p-[14px]"
               >
-                <div className="flex items-center justify-center h-[48px] w-[48px] rounded-full bg-main/10">
-                  <AddIcon className="w-6 h-6 text-main" />
-                </div>
-                <div className="text-[18px] leading-[22px] font-medium text-main">Swap to</div>
+                {toToken === null && (
+                  <>
+                    <div className="flex items-center justify-center h-[48px] w-[48px] rounded-full bg-main/10">
+                      <AddIcon className="w-6 h-6 text-main" />
+                    </div>
+                    <div className="text-[18px] leading-[22px] font-medium text-main">Swap to</div>
+                  </>
+                )}
               </Button>
             </div>
           </div>
@@ -109,6 +123,16 @@ function Swap() {
             }
             tokens={tokensFiltered}
             isNotFound={isNotFound}
+            onClick={(token) => {
+              if (step === 'SELECT_FROM') {
+                setFromToken(token)
+                setStep('START')
+              }
+              if (step === 'SELECT_TO') {
+                setToToken(token)
+                setStep('START')
+              }
+            }}
           />
         </>
       )}

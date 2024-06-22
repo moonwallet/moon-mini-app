@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Page from '../kit/Page'
 import Menu from '../kit/Menu'
@@ -14,6 +15,7 @@ function Watchlist() {
   const { tokens } = useMock()
 
   const { tokensFiltered, isNotFound } = useSearch({ search, tokens: tokens.slice(0, 3) })
+  const navigate = useNavigate()
 
   return (
     <Page bottom={<Menu />}>
@@ -29,6 +31,7 @@ function Watchlist() {
         header={<TokensHeader />}
         tokens={tokensFiltered}
         isNotFound={isNotFound}
+        onClick={(token) => { navigate(`/asset?address=${token.address}`) }}
       />
     </Page>
   )
