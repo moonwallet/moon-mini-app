@@ -4,6 +4,7 @@ import Page from '../kit/Page'
 import Menu from '../kit/Menu'
 import SearchInput from '../kit/SearchInput'
 import Tokens from '../kit/Tokens'
+import TokensHeader from '../kit/TokensHeader'
 
 import { useSearch, useMock } from '../hooks'
 
@@ -24,7 +25,11 @@ function Watchlist() {
         />
       </div>
 
-      <Tokens tokens={tokensFiltered} isNotFound={isNotFound} />
+      <Tokens
+        header={<TokensHeader />}
+        tokens={tokensFiltered}
+        isNotFound={isNotFound}
+      />
     </Page>
   )
 }

@@ -5,6 +5,7 @@ import Menu from '../kit/Menu'
 import SearchInput from '../kit/SearchInput'
 import Button from '../kit/Button'
 import Tokens from '../kit/Tokens'
+import TokensHeader from '../kit/TokensHeader'
 
 import { useSearch, useMock } from '../hooks'
 
@@ -51,7 +52,11 @@ function Market() {
         </div>
       </div>
 
-      <Tokens tokens={tokensFiltered} isNotFound={isNotFound} />
+      <Tokens
+        header={<TokensHeader />}
+        tokens={tokensFiltered}
+        isNotFound={isNotFound}
+      />
     </Page>
   )
 }

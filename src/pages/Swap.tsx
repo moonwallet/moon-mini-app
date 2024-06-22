@@ -100,7 +100,16 @@ function Swap() {
             />
           </div>
 
-          <Tokens tokens={tokensFiltered} isNotFound={isNotFound} />
+          <Tokens
+            header={
+              <div className="text-[14px] leading-[19px] text-[#3C3C4399] font-nu">
+                {step === 'SELECT_FROM' && 'SWAP FROM'}
+                {step === 'SELECT_TO' && 'SWAP TO'}
+              </div>
+            }
+            tokens={tokensFiltered}
+            isNotFound={isNotFound}
+          />
         </>
       )}
 
