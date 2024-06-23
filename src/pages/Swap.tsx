@@ -7,6 +7,7 @@ import Page from '../kit/Page'
 import InputAmount from '../kit/InputAmount'
 import SearchInput from '../kit/SearchInput'
 import Tokens from '../kit/Tokens'
+import Group from '../kit/Group'
 
 import { TToken } from '../types'
 
@@ -15,7 +16,7 @@ import { ReactComponent as SwapIcon } from '../assets/swap.svg'
 import TokenAvatar from '../kit/TokenAvatar'
 
 function Swap() {
-  const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO'>('START')
+  const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO' | 'CONFIRM'>('START')
 
   const [fromToken, setFromToken] = useState<null | TToken>(null)
   const [toToken, setToToken] = useState<null | TToken>(null)
@@ -44,6 +45,12 @@ function Swap() {
       setSearch('')
     }
   }, [step])
+
+  const [isBusy, setIsBusy] = useState(false)
+  const swap = () => {
+    setIsBusy(true)
+    // ...
+  }
 
   return (
     <Page>
@@ -186,6 +193,21 @@ function Swap() {
         </>
       )}
 
+      {step === 'CONFIRM' && (
+        <>
+          <div className="mt-5">
+
+          </div>
+          <h2 className="mt-4">Confirm swap of {fromToken?.ticker} to {toToken?.ticker}</h2>
+          <Group>
+            ...
+          </Group>
+          <Button
+            wrapperClassName="mt-7"
+            onClick={swap}
+          >{!isBusy ? 'CONFIRM AND SWAP' : 'EXECUTING'}</Button>
+        </>
+      )}
 
     </Page>
   )
