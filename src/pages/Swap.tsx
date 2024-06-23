@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import format from '../format'
 import { useSearch, useMock } from '../hooks'
 
 import Button from '../kit/Button'
@@ -8,24 +9,29 @@ import InputAmount from '../kit/InputAmount'
 import SearchInput from '../kit/SearchInput'
 import Tokens from '../kit/Tokens'
 import Group from '../kit/Group'
+import GroupItem from '../kit/GroupItem'
+import TokenAvatar from '../kit/TokenAvatar'
+import Divider from '../kit/Divider'
 
 import { TToken } from '../types'
 
 import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SwapIcon } from '../assets/swap.svg'
-import TokenAvatar from '../kit/TokenAvatar'
 
 function Swap() {
-  const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO' | 'CONFIRM'>('START')
+  const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO' | 'CONFIRM' | 'PROGRESS'>('START')
 
   const [fromToken, setFromToken] = useState<null | TToken>(null)
   const [toToken, setToToken] = useState<null | TToken>(null)
 
   const [amount, setAmount] = useState(0)
 
-  const receiveAmount = amount * 10
+  const rate = 10
+  const receiveAmount = amount * rate
 
-  const isButtonEnabled = amount > 0
+  const [slippage /*, setSlippage */] = useState(0.003)
+
+  const isButtonEnabled = amount > 0 && !!fromToken && !!toToken
   const buttonText = amount === 0
     ? 'ENTER AMOUNT'
     : 'REVIEW ORDER'
@@ -50,6 +56,7 @@ function Swap() {
   const swap = () => {
     setIsBusy(true)
     // ...
+    setTimeout(() => { setStep('PROGRESS') }, 1500)
   }
 
   return (
@@ -152,7 +159,7 @@ function Swap() {
             <Button
               theme="big"
               disabled={!isButtonEnabled}
-              onClick={() => {}}
+              onClick={() => { setStep('CONFIRM') }}
             >
               {buttonText}
             </Button>
@@ -193,22 +200,88 @@ function Swap() {
         </>
       )}
 
-      {step === 'CONFIRM' && (
+      {step === 'CONFIRM' && !!fromToken && !!toToken && (
         <>
-          <div className="mt-5">
-
+          <div className="mt-5 flex items-center">
+            <TokenAvatar token={fromToken} />
+            <TokenAvatar token={toToken} className="relative -left-[10px]" />
           </div>
-          <h2 className="mt-4">Confirm swap of {fromToken?.ticker} to {toToken?.ticker}</h2>
-          <Group>
-            ...
+          <h2 className="mt-4 text-[28px] leading-[36px] font-bold">Confirm swap of <br />{fromToken.ticker} to {toToken.ticker}</h2>
+          <Group className="mt-5">
+            <GroupItem
+              title={`Swap ${fromToken.title}:`}
+              value={format.amount(amount)}
+            />
+            <Divider className="mx-3"/>
+            <GroupItem
+              title={`Receive ${toToken.title}:`}
+              value={format.amount(receiveAmount)}
+            />
+            <Divider className="mx-3"/>
+            <GroupItem
+              title="Rate:"
+              value={`1 ${fromToken.ticker} = ${format.amount(rate)} ${toToken.ticker}`}
+            />
+            <Divider className="mx-3"/>
+            <GroupItem
+              title="Slippage:"
+              value={format.percent(slippage)}
+            />
+            <Divider className="mx-3"/>
+            <GroupItem
+              title="Transaction Fee:"
+              value={format.percent(0.003)}
+            />
           </Group>
           <Button
+            theme="big"
             wrapperClassName="mt-7"
             onClick={swap}
+            disabled={isBusy}
+            isBusy={isBusy}
           >{!isBusy ? 'CONFIRM AND SWAP' : 'EXECUTING'}</Button>
         </>
       )}
 
+      {step === 'PROGRESS' && !!fromToken && !!toToken && (
+        <>
+          <div className="mt-5 flex items-center">
+            <TokenAvatar token={fromToken} />
+            <TokenAvatar token={toToken} className="relative -left-[10px]" />
+          </div>
+          <div className="mt-4">
+            <span className="text-[28px] leading-[36px] font-bold text-plus">+{format.amount(receiveAmount)}</span>&nbsp;
+            <span className="text-[#3C3C4399] font-bold">{toToken.ticker}</span>
+          </div>
+          <div className="mt-1 text-[#3C3C4399]">-{format.amount(amount)} {fromToken.ticker}</div>
+          <Group className="mt-5">
+            <GroupItem
+              title="Status:"
+              value="In progress"
+            />
+            <Divider className="mx-3"/>
+            <GroupItem
+              title="Date:"
+              value={`${(new Date()).toLocaleDateString()} ${(new Date()).toLocaleTimeString()}`}
+            />
+            <Divider className="mx-3"/>
+            <GroupItem
+              title="Rate:"
+              value={`1 ${fromToken.ticker} = ${format.amount(rate)} ${toToken.ticker}`}
+            />
+            <Divider className="mx-3"/>
+            <GroupItem
+              title="Transaction Fee:"
+              value={format.percent(0.003)}
+            />
+          </Group>
+          <Button
+            theme="big-light"
+            wrapperClassName="mt-7"
+            onClick={() => {}}
+          >VIEW ON SOLSCAN</Button>
+        </>
+      )}
     </Page>
   )
 }
