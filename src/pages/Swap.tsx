@@ -17,6 +17,8 @@ import { TToken } from '../types'
 
 import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SwapIcon } from '../assets/swap.svg'
+import { ReactComponent as AdjustIcon } from '../assets/adjust.svg'
+import { ReactComponent as WarnIcon } from '../assets/warn.svg'
 
 function Swap() {
   const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO' | 'CONFIRM' | 'PROGRESS'>('START')
@@ -30,6 +32,8 @@ function Swap() {
   const receiveAmount = amount * rate
 
   const [slippage /*, setSlippage */] = useState(0.003)
+  const [isSlippageOpen, setIsSlippageOpen] = useState(false)
+  const isLowSlippage = slippage < 0.005
 
   const isButtonEnabled = amount > 0 && !!fromToken && !!toToken
   const buttonText = amount === 0
@@ -155,6 +159,18 @@ function Swap() {
               </Button>
             </div>
           </div>
+          {!!fromToken && !!toToken && (
+            <div className="mt-2 flex items-center justify-between">
+              <div className="text-[14px] leading-[22px] text-[#00000066]">1 {fromToken.ticker} = {format.amount(rate)} {toToken.ticker}</div>
+              <Button
+                className="text-main flex items-center gap-1"
+                onClick={() => { setIsSlippageOpen(true) }}
+              >
+                <span className="text-[15px] leading-[21px] font-semibold font-nu">Slippage: {format.percent(slippage)}</span>
+                <AdjustIcon className="w-[14px] h-[22px]" />
+              </Button>
+            </div>
+          )}
           <div className="mt-7">
             <Button
               theme="big"
@@ -164,6 +180,17 @@ function Swap() {
               {buttonText}
             </Button>
           </div>
+
+          {isLowSlippage && (
+            <div className="mt-2 flex items-center justify-center gap-1 text-warn">
+              <WarnIcon className="w-5 h-5" />
+              <span className="text-[14px] leading-[22px]">Transaction might be reverted due to low slippage</span>
+            </div>
+          )}
+
+          {isSlippageOpen && (
+            <></>
+          )}
         </>
       )}
 
