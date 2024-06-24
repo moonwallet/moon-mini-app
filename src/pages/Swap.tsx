@@ -28,14 +28,20 @@ function Swap() {
 
   const [amount, setAmount] = useState(0)
 
+  const rateUsd = 0.01234
+  const amountUsd = amount * rateUsd
+
   const rate = 10
   const receiveAmount = amount * rate
+
+  const balance = 10000
+  const isLowBalance = amount > balance
 
   const [slippage /*, setSlippage */] = useState(0.003)
   const [isSlippageOpen, setIsSlippageOpen] = useState(false)
   const isLowSlippage = slippage < 0.005
 
-  const isButtonEnabled = amount > 0 && !!fromToken && !!toToken
+  const isButtonEnabled = amount > 0 && !isLowBalance && !!fromToken && !!toToken
   const buttonText = amount === 0
     ? 'ENTER AMOUNT'
     : 'REVIEW ORDER'
@@ -111,7 +117,16 @@ function Swap() {
                   amount={amount}
                   onChange={setAmount}
                 />
+                <div className="text-[14px] leading-[22px] text-[#BFC6CD] text-center">
+                  {!fromToken && (<span>&nbsp;</span>)}
+                  {!!fromToken && (isLowBalance ? (
+                    <span className="text-warn">Not enough balance</span>
+                  ) : (
+                    <span>{format.fiat(amountUsd)}</span>)
+                  )}
+                </div>
               </div>
+
               <div className="z-[1] absolute w-10 h-10 -bottom-[24px] left-[50%] -translate-x-[50%]">
                 <Button
                   wrapperClassName=""
