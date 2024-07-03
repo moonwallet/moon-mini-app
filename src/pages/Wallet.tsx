@@ -18,7 +18,7 @@ function Wallet() {
   const { address } = useWallet()
 
   const fiat = 0
-  const fiatFormatted = format.fiat(fiat)
+  const fiatFormatted = format._fiat(fiat)
   const fiatParts = fiatFormatted.split('.')
 
   const delta = 0
@@ -55,7 +55,6 @@ function Wallet() {
             isDeltaPositive ? 'text-plus' : 'text-minus',
           )}>
             <span>{isDeltaPositive ? '+' : '−'}</span>
-            <span>$</span>
             <span>{deltaFormatted}</span>
           </div>
         </div>

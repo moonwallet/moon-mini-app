@@ -94,7 +94,7 @@ function Swap() {
                         <TokenAvatar token={fromToken} />
                         <div>
                           <div className="text-[18px] leading-[22px] font-medium">{fromToken.title}</div>
-                          <div className="text-[14px] leading-[22px] text-text/40">0 {fromToken.ticker}</div>
+                          <div className="text-[14px] leading-[22px] text-text/40">{format.amount(balance)} {fromToken.ticker}</div>
                         </div>
                       </div>
                     </div>
