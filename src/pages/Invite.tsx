@@ -2,16 +2,44 @@ import Page from '../kit/Page'
 import Group from '../kit/Group'
 import GroupItem from '../kit/GroupItem'
 import Divider from '../kit/Divider'
+import Button from '../kit/Button'
+
+import { useCopy, useShare } from '../hooks'
 
 import hiIcon from '../assets/hi.png'
 import { ReactComponent as InfoIcon } from '../assets/info.svg'
 
 function Invite() {
+  const { copy, isCopied } = useCopy()
+  const { share } = useShare()
+
   const invite = 'ABCDEF'
+  const link = '[Insert link]'
+
+  const text = `Here's your exclusive Invite Code for Moon – the Telegram-native wallet for Solana memes: ${invite}\nInstall official wallet bot: ${link}`
 
   return (
     <Page bottom={
-      'bottom'
+      <div className="flex items-center gap-2">
+        <Button
+          wrapperClassName="flex-grow basis-0"
+          theme="big-light"
+          onClick={() => { copy(text) }}
+        >
+          {isCopied ? 'COPIED!' : 'COPY'}
+        </Button>
+        <Button
+          wrapperClassName="flex-grow basis-0"
+          theme="big"
+          onClick={() => { share({
+            title: 'Invite Code for Moon',
+            text,
+            url: link
+          }) }}
+        >
+          SHARE
+        </Button>
+      </div>
     }>
       <div className="flex flex-col items-center">
         <img src={hiIcon} className="w-[80px] h-[80px]" />
