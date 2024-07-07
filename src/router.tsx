@@ -16,6 +16,7 @@ import Receive from './pages/Receive'
 
 import Settings from './pages/Settings'
 import Phrase from './pages/Phrase'
+import Invite from './pages/Invite'
 
 export const router = createHashRouter([
   {
@@ -74,5 +75,9 @@ export const router = createHashRouter([
   {
     path: "/phrase",
     element: <Phrase />,
+  },
+  {
+    path: "/invite",
+    element: <Invite />,
   },
 ])

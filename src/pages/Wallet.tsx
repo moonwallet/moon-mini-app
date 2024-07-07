@@ -38,7 +38,7 @@ function Wallet() {
           </Button>
           <Button
             theme="small-light"
-            onClick={() => {}}
+            onClick={() => { navigate('/invite') }}
           >
             Invite Friends
           </Button>
