@@ -12,6 +12,7 @@ import { ReactComponent as SendIcon } from '../assets/action-send.svg'
 import { ReactComponent as SwapIcon } from '../assets/action-swap.svg'
 import { ReactComponent as ReceiveIcon } from '../assets/action-receive.svg'
 import notFound from '../assets/not-found.png'
+import point from '../assets/point.png'
 
 function Wallet() {
   const navigate = useNavigate()
@@ -87,13 +88,16 @@ function Wallet() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-6 my-5 p-3 pl-[62px] rounded-[16px] bg-[#48486F] text-white text-[18px]">
-        <div>Invite friends — earn 50% from&nbsp;Fees</div>
+      <div className="flex items-center justify-between gap-6 my-5 p-3 rounded-[16px] bg-[#48486F] text-white">
+        <div className="flex items-center gap-2">
+          <img className="w-10 h-10" src={point} />
+          <div className="text-[18px] font-medium">Complete&nbsp;tasks, earn&nbsp;points, get&nbsp;rewards</div>
+        </div>
         <Button
           className="h-10 px-[18px] py-2 rounded-full bg-[#0000004D] text-[15px] font-semibold"
-          onClick={() => {}}
+          onClick={() => { navigate('/points') }}
         >
-          Invite
+          Open
         </Button>
       </div>
 
