@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
 import format from '../format'
-import { usePersistStore } from '../store'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
@@ -9,8 +8,7 @@ import Divider from '../kit/Divider'
 import Group from '../kit/Group'
 import GroupButton from '../kit/GroupButton'
 
-import { useCopy } from '../hooks'
-import { useWallet } from '../hooks'
+import { useCopy, usePersistStore, useWallet } from '../hooks'
 
 import { ReactComponent as PhraseIcon } from '../assets/phrase.svg'
 import { ReactComponent as DisconnectIcon } from '../assets/disconnect.svg'

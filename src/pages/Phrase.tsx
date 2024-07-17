@@ -1,4 +1,4 @@
-import { usePersistStore } from '../store'
+import { usePersistStore } from '../hooks'
 
 import Page from '../kit/Page'
 import ShowMnemonic from '../kit/ShowMnemonic'

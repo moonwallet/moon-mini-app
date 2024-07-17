@@ -2,7 +2,7 @@ import { Keypair } from '@solana/web3.js'
 import * as bip39 from 'bip39'
 import { Buffer } from 'buffer'
 
-import { usePersistStore } from '../store'
+import { usePersistStore } from './useStore'
 
 // @ts-ignore
 window.Buffer = Buffer

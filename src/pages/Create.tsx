@@ -3,7 +3,7 @@ import * as bip39 from 'bip39'
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { usePersistStore } from '../store'
+import { usePersistStore } from '../hooks'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
