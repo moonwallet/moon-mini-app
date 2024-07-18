@@ -1,5 +1,7 @@
+export * from './useApi'
 export * from './useCopy'
 export * from './useInit'
+export * from './useJsonResponse'
 export * from './useMock'
 export * from './useSearch'
 export * from './useShare'

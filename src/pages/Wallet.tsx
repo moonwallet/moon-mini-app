@@ -2,7 +2,7 @@ import cx from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
 
-import { useWallet } from '../hooks'
+import { useGetSomething, useWallet } from '../hooks'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
@@ -27,6 +27,9 @@ function Wallet() {
   const delta = 0
   const deltaFormatted = format.fiat$(delta)
   const isDeltaPositive = delta >= 0
+
+  const { data, isLoading } = useGetSomething()
+  console.log(isLoading, data?.length)
 
   return (
     <Page bottom={<Menu />}>
