@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import format from '../format'
+import { format } from '../utils'
 import { useMock } from '../hooks'
 
 import Button from '../kit/Button'

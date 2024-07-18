@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import format from '../format'
 import { useSearch, useMock } from '../hooks'
 
 import Button from '../kit/Button'
@@ -14,6 +13,7 @@ import TokenAvatar from '../kit/TokenAvatar'
 import Divider from '../kit/Divider'
 
 import { TToken } from '../types'
+import { format } from '../utils'
 
 import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SwapIcon } from '../assets/swap.svg'

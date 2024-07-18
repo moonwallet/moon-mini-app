@@ -3,7 +3,7 @@ import cx from 'classnames'
 import Button from './Button'
 import TokenAvatar from './TokenAvatar'
 
-import format from '../format'
+import { format } from '../utils'
 import { TToken } from '../types'
 
 const Token = ({ token, onClick }: {

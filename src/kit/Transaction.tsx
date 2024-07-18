@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { useMemo} from 'react'
 
-import format from '../format'
+import { format } from '../utils'
 
 type TTxType = 'received' | 'swapped' | 'sent'
 

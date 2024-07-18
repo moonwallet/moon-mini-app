@@ -1,12 +1,14 @@
 import cx from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
-import format from '../format'
+
 import { useWallet } from '../hooks'
 
 import Page from '../kit/Page'
 import Button from '../kit/Button'
 import Menu from '../kit/Menu'
+
+import { format } from '../utils'
 
 import { ReactComponent as SendIcon } from '../assets/action-send.svg'
 import { ReactComponent as SwapIcon } from '../assets/action-swap.svg'
