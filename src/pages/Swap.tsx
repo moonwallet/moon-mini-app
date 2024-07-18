@@ -122,7 +122,7 @@ function Swap() {
                   {!!fromToken && (isLowBalance ? (
                     <span className="text-warn">Not enough balance</span>
                   ) : (
-                    <span>{format.fiat(amountUsd)}</span>)
+                    <span>{format.fiat$(amountUsd)}</span>)
                   )}
                 </div>
               </div>

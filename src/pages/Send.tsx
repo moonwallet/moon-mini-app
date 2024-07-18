@@ -142,7 +142,7 @@ function Send() {
                   {!!fromToken && (isLowBalance ? (
                     <span className="text-warn">Not enough balance</span>
                   ) : (
-                    <span>{format.fiat(amountUsd)}</span>)
+                    <span>{format.fiat$(amountUsd)}</span>)
                   )}
                 </div>
               </div>
@@ -181,7 +181,7 @@ function Send() {
             <Divider className="mx-3"/>
             <GroupItem
               title="Fiat Equivalent:"
-              value={format.fiat(amountUsd)}
+              value={format.fiat$(amountUsd)}
             />
             <Divider className="mx-3"/>
             <GroupItem
@@ -209,7 +209,7 @@ function Send() {
             <span className="text-[28px] leading-[36px] font-bold">-{format.amount(amount)}</span>&nbsp;
             <span className="font-bold">{fromToken.ticker}</span>
           </div>
-          <div className="mt-1 text-[#3C3C4399]">-{format.fiat(amountUsd)}</div>
+          <div className="mt-1 text-[#3C3C4399]">-{format.fiat$(amountUsd)}</div>
           <Group className="mt-5">
             <GroupItem
               title="Status:"

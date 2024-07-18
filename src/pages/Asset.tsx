@@ -58,7 +58,7 @@ function Asset() {
                 <div className="text-[18px] leading-[22px] font-medium">{token.title}</div>
                 <FlagIcon className="w-5 h-5" />
               </div>
-              <div className="text-[24px] leading-[22px] font-semibold">{format.fiat(token.price)}</div>
+              <div className="text-[24px] leading-[22px] font-semibold">{format.fiat$(token.price)}</div>
             </div>
           </div>
           <div className="flex">

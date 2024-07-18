@@ -21,11 +21,11 @@ function Wallet() {
   const { address } = useWallet()
 
   const fiat = 0
-  const fiatFormatted = format._fiat(fiat)
+  const fiatFormatted = format.fiat(fiat)
   const fiatParts = fiatFormatted.split('.')
 
   const delta = 0
-  const deltaFormatted = format.fiat(delta)
+  const deltaFormatted = format.fiat$(delta)
   const isDeltaPositive = delta >= 0
 
   return (
