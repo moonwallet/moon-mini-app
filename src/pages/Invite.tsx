@@ -1,8 +1,4 @@
-import Page from '../kit/Page'
-import Group from '../kit/Group'
-import GroupItem from '../kit/GroupItem'
-import Divider from '../kit/Divider'
-import Button from '../kit/Button'
+import { Page, Group, GroupItem, Divider, Button } from '../kit'
 
 import { useCopy, useShare } from '../hooks'
 

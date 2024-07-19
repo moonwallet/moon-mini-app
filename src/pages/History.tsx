@@ -1,6 +1,4 @@
-import Page from '../kit/Page'
-import Menu from '../kit/Menu'
-import Transaction from '../kit/Transaction'
+import { Page, Menu, Transaction } from '../kit'
 
 function History() {
 

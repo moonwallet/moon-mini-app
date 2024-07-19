@@ -1,13 +1,13 @@
 import cx from 'classnames'
 
-import Button from './Button'
+import { Button } from './'
 
-function GroupButton({ className, icon, text, onClick }: {
+export const GroupButton = ({ className, icon, text, onClick }: {
   className?: string
   icon: any
   text: string
   onClick: VoidFunction
-}) {
+}) => {
   return (
     <Button
       className={cx('GroupButton ', className)}
@@ -20,5 +20,3 @@ function GroupButton({ className, icon, text, onClick }: {
     </Button>
   )
 }
-
-export default GroupButton

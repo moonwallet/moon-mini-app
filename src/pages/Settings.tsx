@@ -1,10 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import Page from '../kit/Page'
-import Button from '../kit/Button'
-import Divider from '../kit/Divider'
-import Group from '../kit/Group'
-import GroupButton from '../kit/GroupButton'
+import { Page, Button, Divider, Group, GroupButton } from '../kit'
 
 import { useCopy, usePersistStore, useWallet } from '../hooks'
 

@@ -1,5 +1,4 @@
-import Page from '../kit/Page'
-import Group from '../kit/Group'
+import { Page, Group } from '../kit'
 
 import point from '../assets/point.png'
 

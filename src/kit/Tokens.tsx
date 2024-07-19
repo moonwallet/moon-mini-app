@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 
 import { TToken } from '../types'
-import Token from '../kit/Token'
+import { Token } from '../kit'
 
 import notFound from '../assets/not-found.png'
 
-const Tokens = ({ header, tokens, isNotFound, onClick }: {
+export const Tokens = ({ header, tokens, isNotFound, onClick }: {
   header?: ReactNode
   tokens: TToken[]
   isNotFound: boolean
@@ -32,5 +32,3 @@ const Tokens = ({ header, tokens, isNotFound, onClick }: {
     </div>
   )
 }
-
-export default Tokens

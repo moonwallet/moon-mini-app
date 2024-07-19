@@ -1,11 +1,10 @@
 import { useState } from 'react'
 
-import Button from '../kit/Button'
-import Dropdown from '../kit/Dropdown'
+import { Button, Dropdown } from '../kit'
 
 import { ReactComponent as SortIcon } from '../assets/sort.svg'
 
-const TokensHeader = () => {
+export const TokensHeader = () => {
   const [isPeriodOpen, setIsPeriodOpen] = useState(false)
 
   const periods = ['1h', '3h', '6h', '12h', '24h']
@@ -34,5 +33,3 @@ const TokensHeader = () => {
     </div>
   )
 }
-
-export default TokensHeader

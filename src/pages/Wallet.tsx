@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useGetSomething, useWallet } from '../hooks'
 
-import Page from '../kit/Page'
-import Button from '../kit/Button'
-import Menu from '../kit/Menu'
+import { Page, Button, Menu } from '../kit'
 
 import { format } from '../utils'
 

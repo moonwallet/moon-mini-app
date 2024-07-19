@@ -35,7 +35,7 @@ const qrCode = new QRCodeStyling({
   }
 })
 
-const QrCode = ({ text, className }: {
+export const QrCode = ({ text, className }: {
   text: string
   className?: string
 }) => {
@@ -62,5 +62,3 @@ const QrCode = ({ text, className }: {
     </div>
   )
 }
-
-export { QrCode }

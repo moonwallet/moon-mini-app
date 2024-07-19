@@ -1,11 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Page from '../kit/Page'
-import Menu from '../kit/Menu'
-import SearchInput from '../kit/SearchInput'
-import Tokens from '../kit/Tokens'
-import TokensHeader from '../kit/TokensHeader'
+import { Page, Menu, SearchInput, Tokens, TokensHeader } from '../kit'
 
 import { useSearch, useMock } from '../hooks'
 

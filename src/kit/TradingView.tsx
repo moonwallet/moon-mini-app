@@ -3,9 +3,9 @@ import { useEffect, useRef } from 'react'
 
 import { TCandle } from '../types'
 
-function TradingView({ candles }: {
+export const TradingView = ({ candles }: {
   candles: TCandle[]
-}) {
+}) => {
   const chartContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(
@@ -78,5 +78,3 @@ function TradingView({ candles }: {
     <div className="TradingView h-full" ref={chartContainerRef} />
   )
 }
-
-export default TradingView

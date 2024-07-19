@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import Button from '../kit/Button'
+import { Button } from '../kit'
 
 import moon from '../assets/moon.png'
 import importIcon from '../assets/import.svg'

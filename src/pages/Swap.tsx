@@ -2,15 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useSearch, useMock } from '../hooks'
 
-import Button from '../kit/Button'
-import Page from '../kit/Page'
-import InputAmount from '../kit/InputAmount'
-import SearchInput from '../kit/SearchInput'
-import Tokens from '../kit/Tokens'
-import Group from '../kit/Group'
-import GroupItem from '../kit/GroupItem'
-import TokenAvatar from '../kit/TokenAvatar'
-import Divider from '../kit/Divider'
+import { Button, Page, InputAmount, SearchInput, Tokens, Group, GroupItem, TokenAvatar, Divider } from '../kit'
 
 import { TToken } from '../types'
 import { format } from '../utils'

@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-const Word = ({ number, word, onChange }: {
+export const Word = ({ number, word, onChange }: {
   number: number
   word: string
   onChange?: (val: string) => void
@@ -20,5 +20,3 @@ const Word = ({ number, word, onChange }: {
     <div className="absolute left-[12px] top-[50%] -translate-y-[50%] text-text/[30%] select-none pointer-events-none">{number}</div>
   </div>
 )
-
-export default Word

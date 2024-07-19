@@ -5,11 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { usePersistStore } from '../hooks'
 
-import Page from '../kit/Page'
-import Button from '../kit/Button'
-import ShowMnemonic from '../kit/ShowMnemonic'
-import Word from '../kit/Word'
-import Success from '../kit/Success'
+import { Page, Button, ShowMnemonic, Word, Success } from '../kit'
 
 function Create() {
   const navigate = useNavigate()

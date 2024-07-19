@@ -1,7 +1,6 @@
 import { usePersistStore } from '../hooks'
 
-import Page from '../kit/Page'
-import ShowMnemonic from '../kit/ShowMnemonic'
+import { Page, ShowMnemonic } from '../kit'
 
 function Phrase() {
   const { mnemonic } = usePersistStore()

@@ -2,7 +2,7 @@ import cx from 'classnames'
 
 import { TToken } from '../types'
 
-const TokenAvatar = ({ className, token }: {
+export const TokenAvatar = ({ className, token }: {
   token: TToken
   className?: string
 }) => {
@@ -15,5 +15,3 @@ const TokenAvatar = ({ className, token }: {
     </div>
   )
 }
-
-export default TokenAvatar

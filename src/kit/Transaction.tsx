@@ -1,11 +1,11 @@
 import cx from 'classnames'
-import { useMemo} from 'react'
+import { useMemo } from 'react'
 
 import { format } from '../utils'
 
 type TTxType = 'received' | 'swapped' | 'sent'
 
-const Transaction = ({ }: { }) => {
+export const Transaction = () => {
   const txTypes: TTxType[] = ['received', 'swapped', 'sent']
   const txType: TTxType = txTypes[Math.floor(Math.random() * 3)]
 
@@ -40,5 +40,3 @@ const Transaction = ({ }: { }) => {
     </div>
   )
 }
-
-export default Transaction

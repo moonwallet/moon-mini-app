@@ -2,22 +2,13 @@ import { useEffect, useState } from 'react'
 
 import { useSearch, useMock } from '../hooks'
 
-import Button from '../kit/Button'
-import Page from '../kit/Page'
-import InputAmount from '../kit/InputAmount'
-import SearchInput from '../kit/SearchInput'
-import Tokens from '../kit/Tokens'
-import Group from '../kit/Group'
-import GroupItem from '../kit/GroupItem'
-import TokenAvatar from '../kit/TokenAvatar'
-import Divider from '../kit/Divider'
+import { Button, Page, InputAmount, SearchInput, Tokens, Group, GroupItem, TokenAvatar, Divider, InputAddress } from '../kit'
 
 import { format } from '../utils'
 import { TToken } from '../types'
 
 import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SendIcon } from '../assets/send.svg'
-import InputAddress from '../kit/InputAddress'
 
 function Send() {
   const [step, setStep] = useState<'SELECT_FROM' | 'ENTER' | 'CONFIRM' | 'PROGRESS'>('SELECT_FROM')

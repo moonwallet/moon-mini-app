@@ -1,11 +1,11 @@
 import cx from 'classnames'
 import OutsideClickHandler from 'react-outside-click-handler'
 
-import Button from '../kit/Button'
+import { Button } from '../kit'
 
 import { ReactComponent as CheckIcon } from '../assets/check.svg'
 
-const Dropdown = ({ isOpen, setIsOpen, items, activeItem, right, onSelect }: {
+export const Dropdown = ({ isOpen, setIsOpen, items, activeItem, right, onSelect }: {
   isOpen: boolean,
   setIsOpen: (_: boolean) => void
   items: any[]
@@ -51,5 +51,3 @@ const Dropdown = ({ isOpen, setIsOpen, items, activeItem, right, onSelect }: {
     </OutsideClickHandler>
   )
 }
-
-export default Dropdown

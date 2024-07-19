@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { ReactComponent as SearchIcon } from '../assets/search.svg'
 
-const SearchInput = ({ placeholder, value, onChange }: {
+export const SearchInput = ({ placeholder, value, onChange }: {
   placeholder: string
   value: string
   onChange: (_: string) => void
@@ -29,5 +29,3 @@ const SearchInput = ({ placeholder, value, onChange }: {
     </div>
   )
 }
-
-export default SearchInput

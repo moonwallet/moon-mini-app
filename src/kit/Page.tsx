@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 import { useInit } from '../hooks'
 
-const Page = ({ className, children, bottom }: {
+export const Page = ({ className, children, bottom }: {
   className?: string
   children: ReactNode
   bottom?: ReactNode
@@ -26,5 +26,3 @@ const Page = ({ className, children, bottom }: {
     </div>
   )
 }
-
-export default Page

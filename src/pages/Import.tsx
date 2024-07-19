@@ -4,10 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { usePersistStore } from '../hooks/useStore'
 
-import Page from '../kit/Page'
-import Button from '../kit/Button'
-import Word from '../kit/Word'
-import Success from '../kit/Success'
+import { Page, Button, Word, Success } from '../kit'
 
 function Import() {
   const navigate = useNavigate()

@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react'
 
-const InputAddress = ({ placeholder, value, onChange }: {
+export const InputAddress = ({ placeholder, value, onChange }: {
   placeholder: string
   value: string
   onChange: (amount: string) => void
@@ -17,5 +17,3 @@ const InputAddress = ({ placeholder, value, onChange }: {
     />
   )
 }
-
-export default InputAddress

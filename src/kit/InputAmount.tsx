@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const InputAmount = ({ amount, onChange }: {
+export const InputAmount = ({ amount, onChange }: {
   amount: number
   onChange: (amount: number) => void
 }) => {
@@ -37,5 +37,3 @@ const InputAmount = ({ amount, onChange }: {
     />
   )
 }
-
-export default InputAmount

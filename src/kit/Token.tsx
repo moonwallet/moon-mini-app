@@ -1,12 +1,11 @@
 import cx from 'classnames'
 
-import Button from './Button'
-import TokenAvatar from './TokenAvatar'
+import { Button, TokenAvatar } from './'
 
 import { format } from '../utils'
 import { TToken } from '../types'
 
-const Token = ({ token, onClick }: {
+export const Token = ({ token, onClick }: {
   token: TToken
   onClick: (token: TToken) => void
 }) => {
@@ -39,5 +38,3 @@ const Token = ({ token, onClick }: {
     </div>
   )
 }
-
-export default Token

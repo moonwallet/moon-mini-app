@@ -2,13 +2,12 @@ import cx from 'classnames'
 
 import { useCopy } from '../hooks'
 
-import Button from '../kit/Button'
-import Word from '../kit/Word'
+import { Button, Word } from '../kit'
 
-function ShowMnemonic({ className, mnemonic }: {
+export const ShowMnemonic = ({ className, mnemonic }: {
   className?: string
   mnemonic: string
-}) {
+}) => {
   const words = mnemonic.split(' ')
   const { copy, isCopied } = useCopy()
   return (
@@ -45,5 +44,3 @@ function ShowMnemonic({ className, mnemonic }: {
     </>
   )
 }
-
-export default ShowMnemonic

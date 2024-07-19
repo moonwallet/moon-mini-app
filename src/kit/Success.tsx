@@ -2,7 +2,7 @@ import Lottie from 'lottie-react'
 
 import animationSuccess from '../assets/animation-success.json'
 
-function Success() {
+export const Success = () => {
   return (
     <div className="Success flex flex-col items-center gap-[50px]">
       <div className="mt-[150px] w-[112px] h-[112px]">
@@ -16,5 +16,3 @@ function Success() {
     </div>
   )
 }
-
-export default Success

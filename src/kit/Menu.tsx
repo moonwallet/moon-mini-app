@@ -1,14 +1,14 @@
 import cx from 'classnames'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import Button from '../kit/Button'
+import { Button } from '../kit'
 
 import { ReactComponent as WalletIcon } from '../assets/menu-wallet.svg'
 import { ReactComponent as MarketIcon } from '../assets/menu-market.svg'
 import { ReactComponent as WatchlistIcon } from '../assets/menu-watchlist.svg'
 import { ReactComponent as HistoryIcon } from '../assets/menu-history.svg'
 
-const Menu = () => {
+export const Menu = () => {
   const navigate = useNavigate()
   const routerLocation = useLocation()
 
@@ -57,5 +57,3 @@ const Menu = () => {
     </div>
   )
 }
-
-export default Menu

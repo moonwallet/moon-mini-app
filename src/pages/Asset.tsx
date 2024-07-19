@@ -3,9 +3,7 @@ import cx from 'classnames'
 import { format } from '../utils'
 import { useMock } from '../hooks'
 
-import Button from '../kit/Button'
-import Page from '../kit/Page'
-import TradingView from '../kit/TradingView'
+import { Button, Page, TradingView } from '../kit'
 
 import { ReactComponent as TokenFavIcon } from '../assets/token-fav.svg'
 import { ReactComponent as TokenExplorerIcon } from '../assets/token-explorer.svg'

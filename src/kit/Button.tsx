@@ -2,7 +2,7 @@ import { useHapticFeedback } from '@vkruglikov/react-telegram-web-app'
 import cx from 'classnames'
 import { ReactNode } from 'react'
 
-import Loader from './Loader'
+import { Loader } from './'
 
 type TButton = {
   theme?: 'default' | 'big' | 'big-light' | 'small' | 'small-light'
@@ -14,7 +14,7 @@ type TButton = {
   onClick: () => void
 }
 
-function Button({ theme = 'default', className, wrapperClassName, children, disabled, isBusy, onClick }: TButton) {
+export const Button = ({ theme = 'default', className, wrapperClassName, children, disabled, isBusy, onClick }: TButton) => {
   const [impactOccurred] = useHapticFeedback()
 
   const onClickVibro = () => {
@@ -54,5 +54,3 @@ function Button({ theme = 'default', className, wrapperClassName, children, disa
     </div>
   )
 }
-
-export default Button

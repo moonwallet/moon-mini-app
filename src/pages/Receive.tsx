@@ -1,5 +1,4 @@
-import Page from '../kit/Page'
-import Button from '../kit/Button'
+import { Page, Button } from '../kit'
 
 import { useCopy } from '../hooks'
 import { useWallet } from '../hooks'
