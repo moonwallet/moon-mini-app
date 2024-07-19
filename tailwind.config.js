@@ -18,7 +18,16 @@ export default {
       fontFamily: {
         'sf': ['SF-Pro'],
         'nu': ['Nunito'],
-      }
+      },
+      animation: {
+        skeleton: 'skeleton 1s linear infinite',
+      },
+      keyframes: {
+        skeleton: {
+          '0%': { backgroundPosition: '100% center' },
+          '100%': { backgroundPosition: '-100% center' },
+        },
+      },
     },
   },
   plugins: [],

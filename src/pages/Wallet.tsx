@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useGetSomething, useWallet } from '../hooks'
 
-import { Page, Button, Menu } from '../kit'
+import { Page, Button, Menu, Skeleton } from '../kit'
 
 import { format } from '../utils'
 
@@ -49,18 +49,26 @@ function Wallet() {
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <div className="text-[36px] leading-[34px] font-bold">
-            <span className="text-[#3C3C4399]">$</span>
-            <span>{fiatParts[0]}.</span>
-            <span className="text-[24px] leading-[34px]">{fiatParts[1]}</span>
-          </div>
-          <div className={cx(
-            'text-[18px] leading-[18px] font-semibold',
-            isDeltaPositive ? 'text-plus' : 'text-minus',
-          )}>
-            <span>{isDeltaPositive ? '+' : '−'}</span>
-            <span>{deltaFormatted}</span>
-          </div>
+          {isLoading ?
+            <Skeleton w={90} h={38} />
+          :
+            <div className="text-[36px] leading-[34px] font-bold">
+              <span className="text-[#3C3C4399]">$</span>
+              <span>{fiatParts[0]}.</span>
+              <span className="text-[24px] leading-[34px]">{fiatParts[1]}</span>
+            </div>
+          }
+          {isLoading ?
+            <Skeleton w={62} h={18} />
+          :
+            <div className={cx(
+              'text-[18px] leading-[18px] font-semibold',
+              isDeltaPositive ? 'text-plus' : 'text-minus',
+            )}>
+              <span>{isDeltaPositive ? '+' : '−'}</span>
+              <span>{deltaFormatted}</span>
+            </div>
+          }
         </div>
 
         <div className="flex items-center justify-center">
