@@ -2,6 +2,7 @@ import cx from 'classnames'
 import { ReactNode } from 'react'
 
 import { useInit } from '../hooks'
+import { Debug } from '.'
 
 export const Page = ({ className, children, bottom }: {
   className?: string
@@ -16,6 +17,7 @@ export const Page = ({ className, children, bottom }: {
     >
       <div>
         {children}
+        <Debug />
       </div>
       {bottom && (
         <div className="sticky bottom-0 mt-4 py-[6px] bg-bg">

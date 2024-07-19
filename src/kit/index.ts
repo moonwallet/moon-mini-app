@@ -1,4 +1,5 @@
 export * from './Button'
+export * from './Debug'
 export * from './Divider'
 export * from './Dropdown'
 export * from './Group'
