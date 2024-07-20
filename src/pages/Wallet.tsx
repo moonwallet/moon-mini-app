@@ -2,9 +2,9 @@ import cx from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
 
-import { useGetSomething, useWallet } from '../hooks'
+import { useGetSomething, useMock, useWallet } from '../hooks'
 
-import { Page, Button, Menu, Skeleton } from '../kit'
+import { Page, Button, Menu, Skeleton, Token } from '../kit'
 
 import { format } from '../utils'
 
@@ -28,6 +28,9 @@ function Wallet() {
 
   const { data, isLoading } = useGetSomething()
   console.log(isLoading, data?.length)
+
+  const { tokens } = useMock()
+  const tokens_ = tokens.slice(0, 4)
 
   return (
     <Page bottom={<Menu />}>
@@ -112,18 +115,46 @@ function Wallet() {
         </Button>
       </div>
 
-      <div className="flex flex-col items-center justify-center gap-3">
-        <img src={notFound} className="w-[112px] h-[112px]" />
-        <div className="font-nu text-[15px] leading-[21px] font-semibold text-center text-[#3C3C4399]">
-          You don’t have any assets.<br />Transfer some SOL to your wallet
-        </div>
-        <Button
-          className="!bg-[#8888881A] text-text"
-          theme="small-light"
-          onClick={() => { navigate('/receive') }}
-        >
-          Receive
-        </Button>
+      <div>
+        {!(!isLoading && !data) &&
+          <div className="mb-[10px]">
+            <div className="w-full text-[#3C3C4399] flex items-center text-[14px] leading-[20px]">
+              <div className="w-[40%]">Token</div>
+              <div className="w-[30%] text-right">Price</div>
+              <div className="w-[30%] text-right">Balance</div>
+            </div>
+            <div className="flex flex-col gap-2">
+            </div>
+          </div>
+        }
+        {isLoading &&
+          <Token />
+        }
+        {!isLoading && !!data &&
+          <div className="flex flex-col gap-2">
+            {tokens_.map(token =>
+              <Token
+                key={token.address}
+                token={token}
+              />
+            )}
+          </div>
+        }
+        {!isLoading && !data &&
+          <div className="flex flex-col items-center justify-center gap-3">
+            <img src={notFound} className="w-[112px] h-[112px]" />
+            <div className="font-nu text-[15px] leading-[21px] font-semibold text-center text-[#3C3C4399]">
+              You don’t have any assets.<br />Transfer some SOL to your wallet
+            </div>
+            <Button
+              className="!bg-[#8888881A] text-text"
+              theme="small-light"
+              onClick={() => { navigate('/receive') }}
+            >
+              Receive
+            </Button>
+          </div>
+        }
       </div>
     </Page>
   )
