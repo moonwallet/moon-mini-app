@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useSearch, useMock } from '../hooks'
+import { useSearch, useGetTokens } from '../hooks'
 
 import { Button, Page, InputAmount, SearchInput, Tokens, Group, GroupItem, TokenAvatar, Divider, InputAddress } from '../kit'
 
@@ -30,9 +30,9 @@ function Send() {
     amount === 0 ? 'ENTER AMOUNT'
     : 'CONFIRM AND SEND'
 
-  const { tokens } = useMock()
+  const { data: tokens } = useGetTokens()
   const [search, setSearch] = useState('')
-  const { tokensFiltered, isNotFound } = useSearch({ search, tokens })
+  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: tokens || [] })
 
   useEffect(() => {
     if (step === 'SELECT_FROM') {

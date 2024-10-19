@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
-import { useGetSomething, useMock, useWallet } from '../hooks'
+import { useGetSomething, useGetTokens, useWallet } from '../hooks'
 import { Page, Button, Menu, Skeleton, Token } from '../kit'
 import { format } from '../utils'
 
@@ -26,8 +26,8 @@ function Wallet() {
   const { data, isLoading } = useGetSomething()
   console.log(isLoading, data?.length)
 
-  const { tokens } = useMock()
-  const tokens_ = tokens.slice(0, 4)
+  const { data: tokens } = useGetTokens()
+  const tokens_ = (tokens || []).slice(0, 4)
 
   return (
     <Page bottom={<Menu />}>

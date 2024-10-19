@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-import { useMock } from '../hooks'
+import { useGetTokens, useGetCandles } from '../hooks'
 import { Button, Page, TradingView } from '../kit'
 import { format } from '../utils'
 
@@ -23,13 +23,17 @@ function Asset() {
   const queryParameters = new URLSearchParams(routerLocation.search)
   const address = queryParameters.get('address')
 
-  const { tokens, candles } = useMock()
+  const { data: tokens } = useGetTokens()
+  const { data: candles } = useGetCandles()
   // const { candles } = useCandles()
-  const token = tokens.find(token => token.address === address) || tokens[0]
+  const token = tokens?.find(token => token.address === address) || tokens?.[0] || null
 
-  const deltaFormatted = format.percent(Math.abs(token.delta))
-  const isDeltaPositive = token.delta >= 0
+  if (!token) {
+    return null
+  }
 
+  const deltaFormatted = format.percent(Math.abs(token?.delta))
+  const isDeltaPositive = token?.delta >= 0
 
   return (
     <Page bottom={
@@ -117,7 +121,9 @@ function Asset() {
               <span>{deltaFormatted}</span>
               <span>%</span>
             </div>
-            <TradingView candles={candles} />
+            {!!candles &&
+              <TradingView candles={candles} />
+            }
           </div>
 
           <div className="flex w-full rounded-[20px] bg-white py-3">

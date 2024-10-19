@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom'
 
 import { Page, Menu, SearchInput, Tokens, TokensHeader } from '../kit'
 
-import { useSearch, useMock } from '../hooks'
+import { useSearch, useGetTokens } from '../hooks'
 
 function Watchlist() {
   const [search, setSearch] = useState('')
 
-  const { tokens } = useMock()
+  const { data: tokens } = useGetTokens()
 
-  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: tokens.slice(0, 3) })
+  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: (tokens || []).slice(0, 3) })
   const navigate = useNavigate()
 
   return (

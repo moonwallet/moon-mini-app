@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { Page, Menu, SearchInput, Button, Tokens, TokensHeader } from '../kit'
 
-import { useSearch, useMock } from '../hooks'
+import { useSearch, useGetTokens } from '../hooks'
 
 import { ReactComponent as SortIcon } from '../assets/sort.svg'
 import { ReactComponent as FilterIcon } from '../assets/filter.svg'
@@ -11,9 +11,9 @@ import { ReactComponent as FilterIcon } from '../assets/filter.svg'
 function Market() {
   const [search, setSearch] = useState('')
 
-  const { tokens } = useMock()
+  const { data: tokens } = useGetTokens()
 
-  const { tokensFiltered, isNotFound } = useSearch({ search, tokens })
+  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: tokens || [] })
   const navigate = useNavigate()
 
   return (

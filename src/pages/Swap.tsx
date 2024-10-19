@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { useSearch, useMock } from '../hooks'
+import { useSearch, useGetTokens } from '../hooks'
 
 import { Button, Page, InputAmount, SearchInput, Tokens, Group, GroupItem, TokenAvatar, Divider } from '../kit'
 
@@ -21,12 +21,12 @@ function Swap() {
   const fromTicker = queryParameters.get('from')
   const toTicker = queryParameters.get('to')
 
-  const { tokens } = useMock()
+  const { data: tokens } = useGetTokens()
   const [fromToken, setFromToken] = useState<null | TToken>(
-    fromTicker && tokens.find(token => token.ticker === fromTicker) || null
+    fromTicker && (tokens || []).find(token => token.ticker === fromTicker) || null
   )
   const [toToken, setToToken] = useState<null | TToken>(
-    toTicker && tokens.find(token => token.ticker === toTicker) || null
+    toTicker && (tokens || []).find(token => token.ticker === toTicker) || null
   )
 
   const [amount, setAmount] = useState(0)
@@ -56,7 +56,7 @@ function Swap() {
   }
 
   const [search, setSearch] = useState('')
-  const { tokensFiltered, isNotFound } = useSearch({ search, tokens })
+  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: tokens || [] })
 
   useEffect(() => {
     if (step === 'START') {
