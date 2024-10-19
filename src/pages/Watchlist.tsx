@@ -10,7 +10,7 @@ function Watchlist() {
 
   const { data: tokens } = useGetTokens()
 
-  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: (tokens || []).slice(0, 3) })
+  const { tokensFiltered, isNotFound } = useSearch({ search, tokens: (tokens || []).slice(1, 4) })
   const navigate = useNavigate()
 
   return (
