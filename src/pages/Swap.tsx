@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { useSearch, useMock } from '../hooks'
 
@@ -15,8 +16,18 @@ import { ReactComponent as WarnIcon } from '../assets/warn.svg'
 function Swap() {
   const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO' | 'CONFIRM' | 'PROGRESS'>('START')
 
-  const [fromToken, setFromToken] = useState<null | TToken>(null)
-  const [toToken, setToToken] = useState<null | TToken>(null)
+  const routerLocation = useLocation()
+  const queryParameters = new URLSearchParams(routerLocation.search)
+  const fromTicker = queryParameters.get('from')
+  const toTicker = queryParameters.get('to')
+
+  const { tokens } = useMock()
+  const [fromToken, setFromToken] = useState<null | TToken>(
+    fromTicker && tokens.find(token => token.ticker === fromTicker) || null
+  )
+  const [toToken, setToToken] = useState<null | TToken>(
+    toTicker && tokens.find(token => token.ticker === toTicker) || null
+  )
 
   const [amount, setAmount] = useState(0)
 
@@ -29,7 +40,7 @@ function Swap() {
   const balance = 10000
   const isLowBalance = amount > balance
 
-  const [slippage /*, setSlippage */] = useState(0.003)
+  const [slippage /*, setSlippage */] = useState(0.01)
   const [isSlippageOpen, setIsSlippageOpen] = useState(false)
   const isLowSlippage = slippage < 0.005
 
@@ -44,7 +55,6 @@ function Swap() {
     setToToken(_fromToken)
   }
 
-  const { tokens } = useMock()
   const [search, setSearch] = useState('')
   const { tokensFiltered, isNotFound } = useSearch({ search, tokens })
 
@@ -60,6 +70,10 @@ function Swap() {
     // ...
     setTimeout(() => { setStep('PROGRESS') }, 1500)
   }
+
+  useEffect(() => {
+    console.log('fromToken', fromToken, 'toToken', toToken)
+  }, [fromToken, toToken])
 
   return (
     <Page>

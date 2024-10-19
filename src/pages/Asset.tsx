@@ -1,9 +1,9 @@
 import cx from 'classnames'
+import { useNavigate, useLocation } from 'react-router-dom'
 
-import { format } from '../utils'
 import { useMock } from '../hooks'
-
 import { Button, Page, TradingView } from '../kit'
+import { format } from '../utils'
 
 import { ReactComponent as TokenFavIcon } from '../assets/token-fav.svg'
 import { ReactComponent as TokenExplorerIcon } from '../assets/token-explorer.svg'
@@ -18,9 +18,14 @@ import { ReactComponent as CommunityIcon } from '../assets/community.svg'
 import { ReactComponent as OutIcon } from '../assets/out.svg'
 
 function Asset() {
+  const navigate = useNavigate()
+  const routerLocation = useLocation()
+  const queryParameters = new URLSearchParams(routerLocation.search)
+  const address = queryParameters.get('address')
+
   const { tokens, candles } = useMock()
   // const { candles } = useCandles()
-  const token = tokens[0]
+  const token = tokens.find(token => token.address === address) || tokens[0]
 
   const deltaFormatted = format.percent(Math.abs(token.delta))
   const isDeltaPositive = token.delta >= 0
@@ -32,14 +37,14 @@ function Asset() {
         <Button
           wrapperClassName="flex-grow basis-0"
           theme="big"
-          onClick={() => {}}
+          onClick={() => { navigate(`/swap?from=SOL&to=${token.ticker !== 'SOL' ? token.ticker : ''}`) }}
         >
           BUY
         </Button>
         <Button
           wrapperClassName="flex-grow basis-0"
           theme="big-light"
-          onClick={() => {}}
+          onClick={() => { navigate(`/swap?from=${token.ticker !== 'SOL' ? token.ticker : ''}&to=SOL`) }}
         >
           SELL
         </Button>

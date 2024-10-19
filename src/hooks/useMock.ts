@@ -17,6 +17,13 @@ export const useMock = () => {
         price: Math.random() * 100,
       })
     }
+    tokens.unshift({
+      address: 'SOL', // ?
+      title: 'Solana',
+      ticker: 'SOL',
+      delta: 100 * Math.random() * (Math.random() > 0.5 ? 1 : -1),
+      price: 154.37,
+    })
     return tokens
   }, [])
 

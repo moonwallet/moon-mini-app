@@ -1,11 +1,8 @@
 import cx from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
-
 import { useGetSomething, useMock, useWallet } from '../hooks'
-
 import { Page, Button, Menu, Skeleton, Token } from '../kit'
-
 import { format } from '../utils'
 
 import { ReactComponent as SendIcon } from '../assets/action-send.svg'
@@ -136,6 +133,7 @@ function Wallet() {
               <Token
                 key={token.address}
                 token={token}
+                onClick={() => { navigate(`/asset?address=${token.address}`) }}
               />
             )}
           </div>
