@@ -99,18 +99,16 @@ function Wallet() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-6 my-5 p-3 rounded-[16px] bg-[#48486F] text-white">
+      <Button
+        className="flex items-center justify-between gap-6 my-5 p-3 rounded-[16px] bg-[#48486F] text-white"
+        onClick={() => { navigate('/points') }}
+      >
         <div className="flex items-center gap-2">
           <img className="w-10 h-10" src={point} />
-          <div className="text-[18px] font-medium">Complete&nbsp;tasks, earn&nbsp;points, get&nbsp;rewards</div>
+          <div className="text-[18px] font-medium text-left">Complete&nbsp;tasks, earn&nbsp;points, get&nbsp;rewards</div>
         </div>
-        <Button
-          className="h-10 px-[18px] py-2 rounded-full bg-[#0000004D] text-[15px] font-semibold"
-          onClick={() => { navigate('/points') }}
-        >
-          Open
-        </Button>
-      </div>
+        <div className="flex items-center justify-center h-10 px-[18px] py-2 rounded-full bg-[#0000004D] text-[15px] font-semibold">Open</div>
+      </Button>
 
       <div>
         {!(!isLoading && !data) &&
