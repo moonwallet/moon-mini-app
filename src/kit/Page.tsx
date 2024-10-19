@@ -1,3 +1,4 @@
+import { BackButton } from '@vkruglikov/react-telegram-web-app'
 import cx from 'classnames'
 import { ReactNode } from 'react'
 
@@ -15,6 +16,9 @@ export const Page = ({ className, children, bottom }: {
     <div
       className={cx('Page pt-3 px-3 min-h-[100vh] flex flex-col justify-between', className)}
     >
+      {!!history.state &&
+        <BackButton onClick={() => { history.back() }} />
+      }
       <div>
         {children}
         <Debug />
