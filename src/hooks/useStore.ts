@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 
 type TStore = {
   isDebug: boolean
@@ -21,5 +21,4 @@ export const usePersistStore = create<TPersistStore>()(persist((set/* , get*/) =
   setMnemonic: (mnemonic) => set(({ mnemonic })),
 }), {
   name: 'moon-storage',
-  storage: createJSONStorage(() => sessionStorage),
 }))
