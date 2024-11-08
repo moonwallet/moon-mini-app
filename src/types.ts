@@ -15,3 +15,8 @@ export type TCandle = {
   close: number
   time: number
 }
+
+export type TShareLinkData = {
+  address?: string
+  ref?: string
+}

@@ -1,12 +1,12 @@
 import cx from 'classnames'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-import { useGetTokens, useGetCandles } from '../hooks'
+import { useGetTokens, useGetCandles, useShareLink, useOpenLink, useCopy, usePlatform } from '../hooks'
 import { Button, Page, TradingView } from '../kit'
 import { format } from '../utils'
 
 import { ReactComponent as TokenFavIcon } from '../assets/token-fav.svg'
-import { ReactComponent as TokenExplorerIcon } from '../assets/token-explorer.svg'
+import { ReactComponent as TokenShareIcon } from '../assets/token-share.svg'
 import { ReactComponent as FlagIcon } from '../assets/flag.svg'
 
 import { ReactComponent as SocialTelegramIcon } from '../assets/social-telegram.svg'
@@ -27,6 +27,22 @@ function Asset() {
   const { data: candles } = useGetCandles()
   // const { candles } = useCandles()
   const token = tokens?.find(token => token.address === address) || tokens?.[0] || null
+
+  const { shareUrl, shareLink } = useShareLink({ address: address || '' })
+  const { openLink } = useOpenLink()
+  const { copy /*, isCopied */ } = useCopy()
+  const { isTg } = usePlatform()
+
+  const share = () => {
+    try {
+      openLink(shareLink)
+      if (!isTg) {
+        copy(shareUrl)
+      }
+    } catch {
+      copy(shareUrl)
+    }
+  }
 
   if (!token) {
     return null
@@ -69,17 +85,19 @@ function Asset() {
             </div>
           </div>
           <div className="flex">
+            {false &&
             <Button
               className="flex items-center justify-center w-[48px] h-[48px] text-[#7474804D]"
               onClick={() => {}}
             >
               <TokenFavIcon className="w-[48px] h-[48px]" />
             </Button>
+            }
             <Button
               className="flex items-center justify-center w-[48px] h-[48px] text-[#99A2AD]"
-              onClick={() => {}}
+              onClick={share}
             >
-              <TokenExplorerIcon className="w-[48px] h-[48px]" />
+              <TokenShareIcon className="w-[48px] h-[48px]" />
             </Button>
           </div>
         </div>
