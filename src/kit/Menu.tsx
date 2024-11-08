@@ -5,7 +5,7 @@ import { Button } from '../kit'
 
 import { ReactComponent as WalletIcon } from '../assets/menu-wallet.svg'
 import { ReactComponent as MarketIcon } from '../assets/menu-market.svg'
-import { ReactComponent as WatchlistIcon } from '../assets/menu-watchlist.svg'
+// import { ReactComponent as WatchlistIcon } from '../assets/menu-watchlist.svg'
 import { ReactComponent as HistoryIcon } from '../assets/menu-history.svg'
 
 export const Menu = () => {
@@ -25,12 +25,14 @@ export const Menu = () => {
       onClick: () => { navigate('/market') },
       isActive: routerLocation.pathname === '/market',
     },
+    /*
     {
       title: 'Watchlist',
       icon: WatchlistIcon,
       onClick: () => { navigate('/watchlist') },
       isActive: routerLocation.pathname === '/watchlist',
     },
+    */
     {
       title: 'History',
       icon: HistoryIcon,

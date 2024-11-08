@@ -18,7 +18,7 @@ export const useApiMock = () => {
       })
     }
     tokens.unshift({
-      address: 'SOL', // ?
+      address: 'SOL', // So11111111111111111111111111111111111111111
       title: 'Solana',
       ticker: 'SOL',
       delta: 100 * Math.random() * (Math.random() > 0.5 ? 1 : -1),
