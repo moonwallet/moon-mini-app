@@ -74,3 +74,26 @@ export const useGetCandles = () => {
     // enabled: ,
   })
 }
+
+export const useGetMe = () => {
+  // const { handleJsonResponse } = useJsonResponse()
+
+  // const url = `${apiUrl}/v1/users/tickets-info`
+  // const url = 'https://jsonplaceholder.typicode.com/posts'
+
+  return useQuery<{ data: { points: number } }, Error>({
+    queryKey: ['me'],
+    queryFn: () => ({
+      data: {
+        points: 123,
+      }
+    })/*() => {
+      return fetch(url, {
+        method: 'GET',
+        headers: {
+          // 'Authorization': authString,
+        }
+      }).then(handleJsonResponse)
+    },*/
+  })
+}

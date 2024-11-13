@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
-import { useGetSomething, useGetTokens, useWallet } from '../hooks'
+import { useGetSomething, useGetTokens, useWallet, useGetMe } from '../hooks'
 import { Page, Button, Menu, Skeleton, Token } from '../kit'
 import { format } from '../utils'
 
@@ -14,6 +14,8 @@ import point from '../assets/point.png'
 export const Home = () => {
   const navigate = useNavigate()
   const { address } = useWallet()
+
+  const { data: me } = useGetMe()
 
   const fiat = 0
   const fiatFormatted = format.fiat(fiat)
@@ -42,9 +44,9 @@ export const Home = () => {
           </Button>
           <Button
             theme="small-light"
-            onClick={() => { navigate('/invite') }}
+            onClick={() => { navigate('/points') }}
           >
-            Invite Friends
+            {me?.data.points} Moon Points
           </Button>
         </div>
 

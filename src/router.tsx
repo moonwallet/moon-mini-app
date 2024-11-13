@@ -1,6 +1,6 @@
 import { createHashRouter } from 'react-router-dom'
 
-import { Start, Import, Create, Home, Market, Watchlist, History, Asset, Send, Swap, Receive, Settings, Phrase, Invite, Points } from './pages'
+import { Start, Import, Create, Home, Market, Watchlist, History, Asset, Send, Swap, Receive, Settings, Phrase, Points } from './pages'
 
 export const router = createHashRouter([
   {
@@ -59,10 +59,6 @@ export const router = createHashRouter([
   {
     path: "/phrase",
     element: <Phrase />,
-  },
-  {
-    path: "/invite",
-    element: <Invite />,
   },
   {
     path: "/points",
