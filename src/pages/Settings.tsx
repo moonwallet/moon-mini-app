@@ -9,7 +9,7 @@ import { format } from '../utils'
 import { ReactComponent as PhraseIcon } from '../assets/phrase.svg'
 import { ReactComponent as DisconnectIcon } from '../assets/disconnect.svg'
 
-function Settings() {
+export const Settings = () => {
   const navigate = useNavigate()
   const { copy, isCopied } = useCopy()
   const { address } = useWallet()
@@ -35,5 +35,3 @@ function Settings() {
     </Page>
   )
 }
-
-export default Settings

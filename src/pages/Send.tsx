@@ -10,7 +10,7 @@ import { TToken } from '../types'
 import { ReactComponent as AddIcon } from '../assets/add.svg'
 import { ReactComponent as SendIcon } from '../assets/send.svg'
 
-function Send() {
+export const Send = () => {
   const [step, setStep] = useState<'SELECT_FROM' | 'ENTER' | 'CONFIRM' | 'PROGRESS'>('SELECT_FROM')
 
   const [fromToken, setFromToken] = useState<null | TToken>(null)
@@ -232,5 +232,3 @@ function Send() {
     </Page>
   )
 }
-
-export default Send

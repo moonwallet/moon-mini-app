@@ -8,7 +8,7 @@ import { useSearch, useGetTokens } from '../hooks'
 import { ReactComponent as SortIcon } from '../assets/sort.svg'
 import { ReactComponent as FilterIcon } from '../assets/filter.svg'
 
-function Market() {
+export const Market = () => {
   const [search, setSearch] = useState('')
 
   const { data: tokens } = useGetTokens()
@@ -58,5 +58,3 @@ function Market() {
     </Page>
   )
 }
-
-export default Market

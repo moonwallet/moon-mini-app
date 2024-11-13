@@ -5,7 +5,7 @@ import { Page, Menu, SearchInput, Tokens, TokensHeader } from '../kit'
 
 import { useSearch, useGetTokens } from '../hooks'
 
-function Watchlist() {
+export const Watchlist = () => {
   const [search, setSearch] = useState('')
 
   const { data: tokens } = useGetTokens()
@@ -32,5 +32,3 @@ function Watchlist() {
     </Page>
   )
 }
-
-export default Watchlist

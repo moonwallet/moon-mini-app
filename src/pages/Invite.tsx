@@ -5,7 +5,7 @@ import { useCopy, useShare } from '../hooks'
 import hiIcon from '../assets/hi.png'
 import { ReactComponent as InfoIcon } from '../assets/info.svg'
 
-function Invite() {
+export const Invite = () => {
   const { copy, isCopied } = useCopy()
   const { share } = useShare()
 
@@ -70,5 +70,3 @@ function Invite() {
     </Page>
   )
 }
-
-export default Invite

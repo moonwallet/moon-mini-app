@@ -11,7 +11,7 @@ import { ReactComponent as ReceiveIcon } from '../assets/action-receive.svg'
 import notFound from '../assets/not-found.png'
 import point from '../assets/point.png'
 
-function Wallet() {
+export const Home = () => {
   const navigate = useNavigate()
   const { address } = useWallet()
 
@@ -155,5 +155,3 @@ function Wallet() {
     </Page>
   )
 }
-
-export default Wallet

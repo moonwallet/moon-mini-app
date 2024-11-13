@@ -1,6 +1,6 @@
 import { Page, Menu, Transaction } from '../kit'
 
-function History() {
+export const History = () => {
 
   const DateMark = ({ date }: { date: string }) => (
     <div className="Date pt-10 pb-2 text-[14px] leading-[18px] text-[#3C3C4399]">{date}</div>
@@ -27,5 +27,3 @@ function History() {
     </Page>
   )
 }
-
-export default History

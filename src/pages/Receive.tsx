@@ -4,7 +4,7 @@ import { useCopy } from '../hooks'
 import { useWallet } from '../hooks'
 import { QrCode } from '../kit/QrCode'
 
-function Receive() {
+export const Receive = () => {
   const { copy, isCopied } = useCopy()
   const { address } = useWallet()
 
@@ -34,5 +34,3 @@ function Receive() {
     </Page>
   )
 }
-
-export default Receive

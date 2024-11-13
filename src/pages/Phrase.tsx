@@ -2,7 +2,7 @@ import { usePersistStore } from '../hooks'
 
 import { Page, ShowMnemonic } from '../kit'
 
-function Phrase() {
+export const Phrase = () => {
   const { mnemonic } = usePersistStore()
 
   if (!mnemonic) {
@@ -15,5 +15,3 @@ function Phrase() {
     </Page>
   )
 }
-
-export default Phrase

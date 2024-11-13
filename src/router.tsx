@@ -1,33 +1,16 @@
 import { createHashRouter } from 'react-router-dom'
 
-import Start from './pages/Start'
-import Import from './pages/Import'
-import Create from './pages/Create'
-
-import Wallet from './pages/Wallet'
-import Market from './pages/Market'
-import Watchlist from './pages/Watchlist'
-import History from './pages/History'
-import Asset from './pages/Asset'
-
-import Send from './pages/Send'
-import Swap from './pages/Swap'
-import Receive from './pages/Receive'
-
-import Settings from './pages/Settings'
-import Phrase from './pages/Phrase'
-import Invite from './pages/Invite'
-import Points from './pages/Points'
+import { Start, Import, Create, Home, Market, Watchlist, History, Asset, Send, Swap, Receive, Settings, Phrase, Invite, Points } from './pages'
 
 export const router = createHashRouter([
   {
     path: "/",
-    element: <Wallet />,
-    errorElement: <Wallet />,
+    element: <Home />,
+    errorElement: <Home />,
   },
   {
     path: "*",
-    element: <Wallet />,
+    element: <Home />,
   },
   {
     path: "/start",

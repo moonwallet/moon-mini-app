@@ -6,7 +6,7 @@ import { usePersistStore } from '../hooks/useStore'
 
 import { Page, Button, Word, Success } from '../kit'
 
-function Import() {
+export const Import = () => {
   const navigate = useNavigate()
   const { setMnemonic } = usePersistStore()
 
@@ -96,5 +96,3 @@ function Import() {
     </Page>
   )
 }
-
-export default Import

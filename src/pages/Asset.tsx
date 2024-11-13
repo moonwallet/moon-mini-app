@@ -17,7 +17,7 @@ import { ReactComponent as CreatedIcon } from '../assets/created.svg'
 import { ReactComponent as CommunityIcon } from '../assets/community.svg'
 import { ReactComponent as OutIcon } from '../assets/out.svg'
 
-function Asset() {
+export const Asset = () => {
   const navigate = useNavigate()
   const routerLocation = useLocation()
   const queryParameters = new URLSearchParams(routerLocation.search)
@@ -196,5 +196,3 @@ function Asset() {
     </Page>
   )
 }
-
-export default Asset

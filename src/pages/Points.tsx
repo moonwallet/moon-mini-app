@@ -2,7 +2,7 @@ import { Page, Group } from '../kit'
 
 import point from '../assets/point.png'
 
-function Points() {
+export const Points = () => {
   const points = 0
 
   return (
@@ -66,5 +66,3 @@ function Points() {
     </Page>
   )
 }
-
-export default Points

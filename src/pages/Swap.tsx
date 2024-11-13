@@ -13,7 +13,7 @@ import { ReactComponent as SwapIcon } from '../assets/swap.svg'
 import { ReactComponent as AdjustIcon } from '../assets/adjust.svg'
 import { ReactComponent as WarnIcon } from '../assets/warn.svg'
 
-function Swap() {
+export const Swap = () => {
   const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO' | 'CONFIRM' | 'PROGRESS'>('START')
 
   const routerLocation = useLocation()
@@ -333,5 +333,3 @@ function Swap() {
     </Page>
   )
 }
-
-export default Swap

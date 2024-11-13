@@ -6,7 +6,7 @@ import moon from '../assets/moon.png'
 import importIcon from '../assets/import.svg'
 import createIcon from '../assets/create.svg'
 
-function Create() {
+export const Start = () => {
   const navigate = useNavigate()
 
   const buttonStyle = 'h-[80px] gb-white'
@@ -45,5 +45,3 @@ function Create() {
     </>
   )
 }
-
-export default Create
