@@ -62,7 +62,7 @@ export const Home = () => {
             <Skeleton w={62} h={18} />
           :
             <div className={cx(
-              'text-[18px] leading-[18px] font-semibold',
+              'opacity-0 text-[18px] leading-[18px] font-semibold',
               isDeltaPositive ? 'text-plus' : 'text-minus',
             )}>
               <span>{isDeltaPositive ? '+' : '−'}</span>

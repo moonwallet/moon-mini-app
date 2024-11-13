@@ -29,7 +29,7 @@ export const Token = ({ token, onClick }: {
             <div className="text-right">
               <div className="text-[18px] leading-[22px]">{format.fiat$(token.price)}</div>
               <div className={cx(
-                'text-[14px] leading-[18px] text-[#3C3C4399]',
+                'opacity-0 text-[14px] leading-[18px] text-[#3C3C4399]',
                 isDeltaPositive ? 'text-plus' : 'text-minus',
               )}>
                 <span>{isDeltaPositive ? '+' : '−'}</span>
