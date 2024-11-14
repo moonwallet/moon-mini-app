@@ -15,7 +15,7 @@ export const Home = () => {
   const navigate = useNavigate()
   const { address } = useWallet()
 
-  const { data: me } = useGetMe()
+  const { data: me, isLoading: isMeLoading } = useGetMe()
 
   const fiat = 0
   const fiatFormatted = format.fiat(fiat)
@@ -42,12 +42,16 @@ export const Home = () => {
           >
             {format.address(address)}
           </Button>
-          <Button
-            theme="small-light"
-            onClick={() => { navigate('/points') }}
-          >
-            {me?.data.points} Moon Points
-          </Button>
+          {isMeLoading ? (
+            <Skeleton w={120} h={33} />
+          ) : (
+            <Button
+              theme="small-light"
+              onClick={() => { navigate('/points') }}
+            >
+              {me?.data.points} Moon Points
+            </Button>
+          )}
         </div>
 
         <div className="flex flex-col items-center gap-2">
