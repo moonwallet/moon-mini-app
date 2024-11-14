@@ -49,7 +49,7 @@ export const Home = () => {
               theme="small-light"
               onClick={() => { navigate('/points') }}
             >
-              {me?.data.points} Moon Points
+              {me?.total_points} Moon Points
             </Button>
           )}
         </div>

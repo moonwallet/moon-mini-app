@@ -1,4 +1,4 @@
-// import { useGetMe } from '../hooks'
+import { useGetMe } from '../hooks'
 import { TShareLinkData } from '../types'
 
 const botUrl = import.meta.env.VITE_BOT_URL
@@ -8,13 +8,13 @@ if (!botUrl) {
 }
 
 export const useShareLink = ({ address }: {
-  address: string
+  address?: string
 }) => {
-  /// const { data: me } = useGetMe()
+  const { data: me } = useGetMe()
 
   const data: TShareLinkData = {
     address: address,
-    ref: 'ABCDEF' /*me?.ref.code*/ || undefined,
+    ref: me?.ref.code || undefined,
   }
 
   const encodedData = btoa(JSON.stringify(data))
