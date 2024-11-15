@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-import { useGetTokens, useGetCandles, useShareLink, useOpenLink, useCopy, usePlatform } from '../hooks'
-import { Button, Page, TradingView } from '../kit'
+import { useGetTokens, /* useGetCandles, */ useShareLink, useOpenLink, useCopy, usePlatform } from '../hooks'
+import { Button, Page /*, TradingView */ } from '../kit'
 import { format } from '../utils'
 
 import { ReactComponent as TokenFavIcon } from '../assets/token-fav.svg'
@@ -24,7 +24,7 @@ export const Asset = () => {
   const address = queryParameters.get('address')
 
   const { data: tokens } = useGetTokens()
-  const { data: candles } = useGetCandles()
+  // const { data: candles } = useGetCandles()
   // const { candles } = useCandles()
   const token = tokens?.find(token => token.address === address) || tokens?.[0] || null
 
@@ -50,6 +50,8 @@ export const Asset = () => {
 
   const deltaFormatted = format.percent(Math.abs(token?.delta))
   const isDeltaPositive = token?.delta >= 0
+
+  const pool_address = 'EP2ib6dYdEeqD8MfE2ezHCxX3kP3K2eLKkirfPm5eyMx'
 
   return (
     <Page bottom={
@@ -130,18 +132,23 @@ export const Asset = () => {
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <div className="w-full relative h-[350px] rounded-[20px] bg-white p-2 pt-[64px]">
+          <div className="w-full relative h-[350px] rounded-[20px] bg-white --p-2 --pt-[64px] overflow-hidden">
             <div className={cx(
-              'opacity-0 absolute top-3 right-3 px-3 py-[6px] rounded-[20px] text-[14px] leading-[18px] text-[#3C3C4399]',
+              '!opacity-0 absolute top-3 right-3 px-3 py-[6px] rounded-[20px] text-[14px] leading-[18px] text-[#3C3C4399]',
               isDeltaPositive ? 'text-[#50AB19] bg-[#50AB19]/10' : 'text-minus bg-minus/10',
             )}>
               <span>{isDeltaPositive ? '+' : '−'}</span>
               <span>{deltaFormatted}</span>
               <span>%</span>
             </div>
-            {!!candles &&
+            {/* {!!candles &&
               <TradingView candles={candles} />
-            }
+            } */}
+            <iframe
+              id="dextools-widget"
+              className="w-full h-[350px]"
+              src={`https://www.dextools.io/widget-chart/en/solana/pe-light/${pool_address}?theme=light&chartType=1&chartResolution=5&drawingToolbars=false&chartInUsd=true&headerColor=f3ecf9`}
+            />
           </div>
 
           <div className="flex w-full rounded-[20px] bg-white py-3">
