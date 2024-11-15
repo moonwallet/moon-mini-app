@@ -147,7 +147,7 @@ export const Asset = () => {
             <iframe
               id="dextools-widget"
               className="w-full h-[350px]"
-              src={`https://www.dextools.io/widget-chart/en/solana/pe-light/${pool_address}?theme=light&chartType=1&chartResolution=5&drawingToolbars=false&chartInUsd=true&headerColor=f3ecf9`}
+              src={`https://www.dextools.io/widget-chart/en/solana/pe-light/${pool_address}?theme=light&chartType=1&chartResolution=5&drawingToolbars=false&chartInUsd=true&headerColor=ffffff`}
             />
           </div>
 
