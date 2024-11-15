@@ -6,6 +6,7 @@ import { useCopy, usePersistStore, useWallet } from '../hooks'
 
 import { format } from '../utils'
 
+import ava from '../assets/ava.png'
 import { ReactComponent as PhraseIcon } from '../assets/phrase.svg'
 import { ReactComponent as DisconnectIcon } from '../assets/disconnect.svg'
 
@@ -18,7 +19,9 @@ export const Settings = () => {
   return (
     <Page>
       <div className="mt-5 flex flex-col gap-2 items-center">
-        <div className="w-[80px] h-[80px] rounded-full bg-[#D6DDEA]" />
+        <div className="w-[80px] h-[80px] rounded-full overflow-hidden bg-[#D6DDEA]">
+          <img className="w-[80px] h-[80px]" src={ava} />
+        </div>
         <div className="text-[18px] leading-[22px] font-medium">{format.address(address)}</div>
         <Button
           theme="small-light"
