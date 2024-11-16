@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import { Loader } from './'
 
 type TButton = {
-  theme?: 'default' | 'big' | 'big-light' | 'small' | 'small-light'
+  theme?: 'default' | 'big' | 'big-light' | 'big-danger' | 'small' | 'small-light'
   className?: string
   wrapperClassName?: string
   disabled?: boolean
@@ -29,6 +29,7 @@ export const Button = ({ theme = 'default', className, wrapperClassName, childre
     'default': '',
     'big': `${big} bg-main text-white`,
     'big-light': `${big} bg-main/[10%] text-main`,
+    'big-danger': `${big} bg-warn text-white`,
     'small': `${small} bg-main text-white`,
     'small-light': `${small} bg-main/[10%] text-main`,
   }[theme]
