@@ -30,7 +30,7 @@ export const Asset = () => {
 
   const { shareUrl, shareLink } = useShareLink({
     address: address || '',
-    text: `[${token?.ticker}] ${token?.title} | Trade in 🌚 Moon Wallet!`
+    text: `**${token?.ticker}** ${token?.title} — Trade in 🌚 Moon Wallet!`
   })
   const { openLink } = useOpenLink()
   const { copy /*, isCopied */ } = useCopy()
