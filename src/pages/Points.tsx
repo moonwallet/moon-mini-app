@@ -6,7 +6,9 @@ import point from '../assets/point.png'
 export const Points = () => {
   const { data: me, refetch: refetchMe } = useGetMe()
   const { data: tasks, refetch: refetchTasks } = useGetTasks()
-  const { shareUrl, shareLink } = useShareLink({})
+  const { shareUrl, shareLink } = useShareLink({
+    text: `Your invite to 🌚 Moon Wallet!`
+  })
   const { openLink } = useOpenLink()
   const { copy, isCopied } = useCopy()
   const { isTg } = usePlatform()

@@ -7,10 +7,13 @@ if (!botUrl) {
   console.error('No VITE_BOT_URL')
 }
 
-export const useShareLink = ({ address }: {
+export const useShareLink = ({ address, text }: {
   address?: string
+  text?: string
 }) => {
   const { data: me } = useGetMe()
+
+  const _text = text || '🌚 Moon Wallet'
 
   const data: TShareLinkData = {
     address: address,
@@ -23,7 +26,7 @@ export const useShareLink = ({ address }: {
     .split('/').join('_')
 
   const shareUrl = `${botUrl}/app?startapp=${encodedData}`
-  const shareLink = `https://t.me/share/url?text=${encodeURIComponent('Moon Wallet')}&url=${encodeURIComponent(shareUrl)}&`
+  const shareLink = `https://t.me/share/url?text=${encodeURIComponent(_text)}&url=${encodeURIComponent(shareUrl)}&`
 
   return { shareUrl, shareLink }
 }

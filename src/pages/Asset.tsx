@@ -28,7 +28,10 @@ export const Asset = () => {
   // const { candles } = useCandles()
   const token = tokens?.find(token => token.address === address) || tokens?.[0] || null
 
-  const { shareUrl, shareLink } = useShareLink({ address: address || '' })
+  const { shareUrl, shareLink } = useShareLink({
+    address: address || '',
+    text: `[${token?.ticker}] ${token?.title} | Trade in 🌚 Moon Wallet!`
+  })
   const { openLink } = useOpenLink()
   const { copy /*, isCopied */ } = useCopy()
   const { isTg } = usePlatform()
