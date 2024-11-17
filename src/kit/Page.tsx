@@ -1,6 +1,7 @@
 import { BackButton } from '@vkruglikov/react-telegram-web-app'
 import cx from 'classnames'
 import { ReactNode } from 'react'
+import { ScrollRestoration } from 'react-router-dom'
 
 import { useInit } from '../hooks'
 import { Debug } from '.'
@@ -29,6 +30,7 @@ export const Page = ({ className, children, bottom }: {
           <div className="absolute -top-2 w-full h-2 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
         </div>
       )}
+      <ScrollRestoration />
     </div>
   )
 }
