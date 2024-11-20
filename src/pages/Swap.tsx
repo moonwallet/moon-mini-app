@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { useSearch, useGetTokens } from '../hooks'
+import { useSearch, useGetTokens, usePersistStore } from '../hooks'
 
-import { Button, Page, InputAmount, SearchInput, Tokens, Group, GroupItem, TokenAvatar, Divider } from '../kit'
+import { Button, Page, InputAmount, SearchInput, Tokens, Group, GroupItem, TokenAvatar, Divider, BottomSheet } from '../kit'
 
-import { TToken } from '../types'
+import { TSlippage, TToken } from '../types'
 import { format } from '../utils'
 
 import { ReactComponent as AddIcon } from '../assets/add.svg'
@@ -29,6 +29,8 @@ export const Swap = () => {
     toTicker && (tokens || []).find(token => token.ticker === toTicker) || null
   )
 
+  const isAdditionalTxInfo: boolean = !!fromToken && !!toToken
+
   const [amount, setAmount] = useState(0)
 
   const rateUsd = 0.01234
@@ -40,9 +42,18 @@ export const Swap = () => {
   const balance = 10000
   const isLowBalance = amount > balance
 
-  const [slippage /*, setSlippage */] = useState(0.01)
+
+  const { slippage, setSlippage } = usePersistStore()
+  const [tempSlippage, setTempSlippage] = useState<TSlippage>(slippage)
   const [isSlippageOpen, setIsSlippageOpen] = useState(false)
   const isLowSlippage = slippage < 0.005
+
+  useEffect(() => {
+    if (isSlippageOpen) {
+      setTempSlippage(slippage)
+    }
+  }, [isSlippageOpen, slippage, setTempSlippage])
+
 
   const isButtonEnabled = amount > 0 && !isLowBalance && !!fromToken && !!toToken
   const buttonText = amount === 0
@@ -180,14 +191,14 @@ export const Swap = () => {
               </Button>
             </div>
           </div>
-          {!!fromToken && !!toToken && (
+          {isAdditionalTxInfo && (
             <div className="mt-2 flex items-center justify-between">
-              <div className="text-[14px] leading-[22px] text-[#00000066]">1 {fromToken.ticker} = {format.amount(rate)} {toToken.ticker}</div>
+              <div className="text-[14px] leading-[22px] text-[#00000066]">1 {fromToken?.ticker} = {format.amount(rate)} {toToken?.ticker}</div>
               <Button
                 className="text-main flex items-center gap-1"
                 onClick={() => { setIsSlippageOpen(true) }}
               >
-                <span className="text-[15px] leading-[21px] font-semibold font-nu">Slippage: {format.percent(slippage)}</span>
+                <span className="text-[15px] leading-[21px] font-semibold font-nu">Slippage: {format.slippage(slippage)}</span>
                 <AdjustIcon className="w-[14px] h-[22px]" />
               </Button>
             </div>
@@ -202,16 +213,45 @@ export const Swap = () => {
             </Button>
           </div>
 
-          {isLowSlippage && (
+          {isLowSlippage && isAdditionalTxInfo && (
             <div className="mt-2 flex items-center justify-center gap-1 text-warn">
               <WarnIcon className="w-5 h-5" />
               <span className="text-[14px] leading-[22px]">Transaction might be reverted due to low slippage</span>
             </div>
           )}
 
-          {isSlippageOpen && (
-            <></>
-          )}
+          <BottomSheet
+            isOpen={isSlippageOpen}
+            setIsOpen={setIsSlippageOpen}
+          >
+            <div className="text-[17px] leading-[22px] font-semibold">Slippage Tolerance</div>
+            <div className="mt-1 text-[14px] leading-[22px] text-text/40">The amount the price can change unfavorably before the trade reverts</div>
+            <div className="mt-3 flex items-center justify-between gap-2 h-[54px] rounded-[16px] bg-bg2 px-[14px] py-2">
+              <div className="text-[18px] leading-[22px] font-medium">{format.slippage(tempSlippage)}</div>
+              <div className="flex items-center justify-center gap-2">
+                {[0.003, 0.01, 0.05].map(_ => (
+                  <Button
+                    key={`slippage-${_}`}
+                    theme="small-light"
+                    onClick={() => { setTempSlippage(_) }}
+                  >
+                    {format.slippage(_)}
+                  </Button>
+                ))}
+              </div>
+            </div>
+            <div className="mt-7">
+              <Button
+                theme="big-light"
+                onClick={() => {
+                  setIsSlippageOpen(false)
+                  setSlippage(tempSlippage)
+                }}
+              >
+                SAVE
+              </Button>
+            </div>
+          </BottomSheet>
         </>
       )}
 
@@ -273,7 +313,7 @@ export const Swap = () => {
             <Divider className="mx-3"/>
             <GroupItem
               title="Slippage:"
-              value={format.percent(slippage)}
+              value={format.slippage(slippage)}
             />
             <Divider className="mx-3"/>
             <GroupItem

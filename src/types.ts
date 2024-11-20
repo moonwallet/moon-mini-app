@@ -49,3 +49,5 @@ export type TTask = {
   is_partner?: boolean
   image_url?: string
 }
+
+export type TSlippage = number

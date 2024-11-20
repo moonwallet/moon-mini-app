@@ -4,6 +4,7 @@ export const format = {
   fiat: (amount: number) => amount.toFixed(2),
   address: (address: string) => `${address.substring(0, 4)}..${address.substring(address.length - 4)}`,
   percent: (decimalShare: number) => (decimalShare * 100).toFixed(2) + '%',
+  slippage: (slippage: number) => `${(slippage * 100).toFixed(slippage >= 0.01 ? 0 : 1)}%`,
   commas: (amount: number) => parseFloat(amount.toFixed(2)).toLocaleString('en-US'),
   short: (amount: number, digits: number = 2): string => {
     const lookup = [
