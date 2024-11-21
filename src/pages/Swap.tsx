@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { useSearch, useGetTokens, usePersistStore } from '../hooks'
+import { useSearch, useGetTokens, usePersistStore, useToast } from '../hooks'
 
 import { Button, Page, InputAmount, SearchInput, Tokens, Group, GroupItem, TokenAvatar, Divider, BottomSheet } from '../kit'
 
@@ -16,6 +16,7 @@ import { ReactComponent as WarnIcon } from '../assets/warn.svg'
 export const Swap = () => {
   const [step, setStep] = useState<'START' | 'SELECT_FROM' | 'SELECT_TO' | 'CONFIRM' | 'PROGRESS'>('START')
 
+  const { toast } = useToast()
   const routerLocation = useLocation()
   const queryParameters = new URLSearchParams(routerLocation.search)
   const fromTicker = queryParameters.get('from')
@@ -121,7 +122,7 @@ export const Swap = () => {
                   <div className="absolute right-[14px] top-[50%] -translate-y-[50%]">
                     <Button
                       theme="small-light"
-                      onClick={() => { }}
+                      onClick={() => { toast({ text: 'Soon, not implemented yet' }) }}
                     >
                       Use Max
                     </Button>

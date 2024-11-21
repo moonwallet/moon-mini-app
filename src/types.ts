@@ -51,3 +51,8 @@ export type TTask = {
 }
 
 export type TSlippage = number
+
+export type TToast = {
+  text: string
+  createdAt: number
+}

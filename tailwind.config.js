@@ -22,11 +22,16 @@ export default {
       },
       animation: {
         skeleton: 'skeleton 1s linear infinite',
+        appear: 'appear 0.2s ease',
       },
       keyframes: {
         skeleton: {
           '0%': { backgroundPosition: '100% center' },
           '100%': { backgroundPosition: '-100% center' },
+        },
+        appear : {
+          '0%': { opacity: 0, scale: 0, },
+          '100%': { opacity: 1, scale: 1, },
         },
       },
     },

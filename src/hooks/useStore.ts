@@ -1,15 +1,21 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import { TSlippage } from '../types'
+import { TSlippage, TToast } from '../types'
 
 type TStore = {
   isDebug: boolean
   setDebug: (_: boolean) => void
+
+  toasts: TToast[]
+  setToasts: (_: TToast[]) => void
 }
 
 export const useStore = create<TStore>((set/*, get*/) => ({
   isDebug: false,
   setDebug: (isDebug) => set(({ isDebug })),
+
+  toasts: [],
+  setToasts: (toasts) => set(({ toasts })),
 }))
 
 type TPersistStore = {
