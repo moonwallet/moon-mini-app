@@ -56,3 +56,11 @@ export type TToast = {
   text: string
   createdAt: number
 }
+
+export type TTx = {
+  status: TTxStatus
+  type: TTxType
+}
+
+export type TTxType = 'received' | 'swapped' | 'sent'
+export type TTxStatus = 'wait' | 'success' | 'fail'
